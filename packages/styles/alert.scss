@@ -1,0 +1,107 @@
+// base
+.y-alert {
+  width: 100%;
+  padding: 8px 16px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  opacity: 1;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+// plain theme
+@each $color, $value in $colors {
+  .y-alert.#{$color}
+  {
+    color:$value;
+  }
+}
+
+@each $color, $value in $plain_background_colors {
+  .y-alert.#{$color}
+  {
+    background-color:$value;
+  }
+}
+
+// dark theme
+@each $color, $value in $colors {
+  .y-alert.#{$color}.is-dark
+  {
+    color: #fff;
+    background-color: $value;
+
+  }
+}
+
+// content
+.y-alert__content {
+  display: flex;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+// close btn
+.y-alert.is-light .y-alert__closebtn {
+  color: #c0c4cc;
+}
+.y-alert.is-dark .y-alert__closebtn{
+  color: #fff;
+}
+.y-alert__closebtn.is-customed {
+  font-style: normal;
+  font-size: 13px;
+}
+.y-alert__closebtn {
+  font-size: 12px;
+  opacity: 1;
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+}
+
+// description
+.y-alert .y-alert__description {
+  font-size: 12px;
+  margin: 5px 0 0;
+}
+.y-alert.is-dark .y-alert__description {
+  color: #fff;
+}
+@each $color, $value in $colors {
+  .y-alert.#{$color} .y-alert__description
+  {
+    color:$value;
+  }
+}
+
+// center
+.y-alert.is-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+// big icon
+.is-big i{
+  font-size: 26px;
+}
+
+// title
+.y-alert__title {
+  font-size: 13px;
+  line-height: 18px;
+}
+.y-alert__title.is-bold {
+  font-weight: 700;
+}

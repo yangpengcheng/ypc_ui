@@ -1,0 +1,63 @@
+.y-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.y-slider:hover {
+  opacity: 1;
+}
+
+.y-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.y-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@each $color, $value in $plain_background_colors {
+  .y-slider.#{$color}
+  {
+    background:$value
+  }
+}
+
+@each $color, $value in $colors {
+  .y-slider.#{$color}::-webkit-slider-thumb
+  {
+    background:$value
+  }
+  .y-slider.#{$color}::-moz-range-thumb{
+    background:$value;
+    border-color: $value;
+  }
+}
+
+.y-slider.is-disabled::-moz-range-thumb,
+.y-slider.is-disabled::-webkit-slider-thumb,
+.y-slider.is-disabled
+{
+  cursor: not-allowed;
+}
+
+@each $color, $value in $disabled_colors {
+  .y-slider.#{$color}.is-disabled::-webkit-slider-thumb
+  {
+    background:$value
+  }
+  .y-slider.#{$color}.is-disabled::-moz-range-thumb{
+    background:$value;
+    border-color: $value;
+  }
+}

@@ -1,0 +1,128 @@
+.y-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  transition:all .15s ease-out 0s;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  outline: none;
+  border-radius: 10%;
+}
+
+.y-radio {
+  border-radius: 50%;
+}
+
+.y-radio:checked:before {
+  transform: scale(1);
+}
+
+.radio-container{
+  display: flex;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+.y-radio:before {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  transform: scale(0);
+  margin: 4px;
+  transition: all ease-out 250ms;
+}
+
+.y-radio.large:before{
+  width: 12px;
+  height: 12px;
+}
+
+.y-radio.medium:before{
+  width: 10px;
+  height: 10px;
+}
+
+.y-radio.small:before{
+  width: 8px;
+  height: 8px;
+}
+
+.y-radio.mini:before{
+  width: 6px;
+  height: 6px;
+}
+
+
+
+@each $color, $value in $colors {
+  .y-radio.#{$color}{
+    border: 2px solid $value;
+  }
+  
+  .y-radio.#{$color}:checked:before{
+    background: $value;
+  }
+}
+
+@each $color, $value in $disabled_colors {
+  .y-radio.#{$color}.disabled{
+    cursor: not-allowed;
+    border: 2px solid $value;
+  }
+  
+  .y-radio.#{$color}disabled:checked:before{
+    background: $value;
+  }
+}
+
+
+.y-radio.large{
+  margin: 8px 0;
+  margin-right: 5px;
+  height: 24px;
+  width: 24px;
+}
+.y-radio.medium{
+  margin: 7px 0;
+  margin-right: 5px;
+  height: 22px;
+  width: 22px;
+}
+
+.y-radio.small{
+  margin: 6px 0;
+  margin-right: 5px;
+  height: 20px;
+  width: 20px;
+}
+
+.y-radio.mini{
+  margin: 5px 0;
+  margin-right: 5px;
+  height: 18px;
+  width: 18px;
+}
+
+.y-radio-label-large{
+  font-size: 16px;
+}
+.y-radio-label-medium{
+  font-size: 16px;
+}
+.y-radio-label-small{
+  font-size: 14px;
+}
+.y-radio-label-mini{
+  font-size: 14px;
+}

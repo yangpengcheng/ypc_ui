@@ -1,24 +1,24 @@
-# ypc-ui
+# ypc-ui -- Component library based on vue3.x
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
+## 1. Install
 ```
-npm run serve
+npm i ypc-ui
 ```
 
-### Compiles and minifies for production
+## 2. Use
+#### ① All introduction
+
 ```
-npm run build
+import ypcui from 'ypc-ui'
+import 'ypc-ui/dist/ypc-ui.css'
+
+createApp(App).use(ypcui)...
 ```
 
-### Lints and fixes files
+#### ② On-demand introduction
 ```
-npm run lint
+import { Button } from 'ypc-ui'
+Vue.component(Button.name,Button)
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
