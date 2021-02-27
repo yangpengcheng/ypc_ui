@@ -26,9 +26,8 @@
       <y-accordion-item title="尺寸">
         <p>尺寸</p>
           <y-switch label="1" v-model="switchVal" color="attention" size="large"></y-switch>
-          <y-switch label="2" v-model="switchVal" color="danger" size="medium"></y-switch>
+          <y-switch label="2" v-model="switchVal" color="danger" size="default"></y-switch>
           <y-switch label="3" v-model="switchVal" color="info" size="small"></y-switch>
-          <y-switch label="4" v-model="switchVal" color="primary" size="mini"></y-switch>
       </y-accordion-item>
     </y-accordion>
   </div>

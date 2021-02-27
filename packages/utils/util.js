@@ -1,3 +1,7 @@
 import { getCurrentInstance } from 'vue'
 
-export const getSize = () => getCurrentInstance().proxy.$ELEMENT.size
+export const getSize = () => {
+  if (getCurrentInstance().$ELEMENT) {
+    return getCurrentInstance().proxy.$ELEMENT.size
+  }
+}

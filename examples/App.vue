@@ -11,7 +11,8 @@
     <router-link to="/radio">Radio</router-link>  |
     <router-link to="/switch">Switch</router-link> |
     <router-link to="/tag">Tag</router-link> |
-    <router-link to="/slider">Slider</router-link>
+    <router-link to="/slider">Slider</router-link> |
+    <router-link to="/menu">Menu</router-link>
   </div>
   <router-view/>
 </template>

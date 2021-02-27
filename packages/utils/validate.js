@@ -3,7 +3,7 @@ export const colorValidator = (color) => {
 }
 
 export const sizeValidator = (size) => {
-  return ['large', 'medium', 'small', 'mini', null].includes(size)
+  return ['large', 'default', 'small', null].includes(size)
 }
 
 const typeValidator = (o, type) => {

@@ -6,7 +6,7 @@ import ui from '../packages/index.js'
 import 'normalize.css/normalize.css'
 
 const app = createApp(App)
-app.config.globalProperties.$ELEMENT = { size: 'small' }
+app.config.globalProperties.$ELEMENT = { size: 'default' }
 
 app.use(ui)
   .use(router)

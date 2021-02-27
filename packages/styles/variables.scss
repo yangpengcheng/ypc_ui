@@ -1,33 +1,22 @@
-/*颜色*/
 $colors: (
-  "attention": #e6ca2e,
-  "danger": #f56c6c,
-  "info": #909399,
-  "primary": #409eff,
-  "success": #67c23a,
-  "warning": #e6a23c,
+  "attention": #ffd53c,
+  "danger": #ff533d,
+  "info": #909396,
+  "primary": #4083ff,
+  "success": #29cc47,
+  "warning": #ff9e42,
 );
 
 // alpha = 0.5
 $disabled_colors: (
-  "attention": #f2e496,
-  "danger": #fab5b5,
-  "info": #c7c9cc,
-  "primary": #9fceff,
-  "success": #b3e09c,
-  "warning": #f2d09d,
+  "attention": #fff097,
+  "danger": #ffab9a,
+  "info": #a4a7ab,
+  "primary": #86bdff,
+  "success": #97e6a6,
+  "warning": #ffdaa6,
 );
 
-
-// alpha = 0.7
-$plain_colors:(
-  "attention": #edca2e,
-  "danger": #f89898,
-  "info": #b1b3b7,
-  "primary": #79bbff,
-  "success": #94d475,
-  "warning": #edbe76,
-);
 
 
 // alpha = 0.2
@@ -39,31 +28,8 @@ $plain_background_colors:(
   "success": #e1f3d8,
   "warning": #faecd8,
 );
-
-
-$focus_colors: (
-  "attention": #f8c32f,
-  "danger": #f78989,
-  "default": #cac1c1,
-  "info": #a6a9ad,
-  "primary": #66b1ff,
-  "success": #85c161,
-  "warning": #ebb563,
-);
-
-$active_colors: (
-  "attention": #f5bc12,
-  "danger": #dd6161,
-  "default": #ccbcbc,
-  "info": #82848a,
-  "primary": #3a8ee6,
-  "success": #5daf34,
-  "warning": #cf9236,
-);
-
 $font_size: (
   "large": 16px,
-  "medium": 16px,
-  "small": 14px,
-  "mini": 14px,
+  "default": 14px,
+  "small": 12px,
 );

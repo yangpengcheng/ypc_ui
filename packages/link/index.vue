@@ -9,10 +9,12 @@
     :href="disabled ? null : href"
     @click="handleClick"
   >
-    <span v-if="$slots.default" class="y-link--inner">
-      <slot></slot>
-    </span>
-    <slot v-if="$slots.icon" name="icon"></slot>
+    <div class="y-link--inner">
+      <span v-if="$slots.default" class="y-link--inner">
+        <slot></slot>
+      </span>
+      <i :class="['bi', iconClass]" v-if="iconClass" style="margin-left:5px"></i>
+    </div>
   </a>
 </template>
 <script>
@@ -31,7 +33,7 @@ export default {
     },
     disabled: { type: Boolean, default: false },
     href: { type: String, default: '' },
-    icon: { type: String, default: '' }
+    iconClass: { type: String, default: '' }
   },
   setup (props, { emit }) {
     const handleClick = (event) => {
@@ -45,5 +47,64 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss">
+@import "../styles/variables.scss";
+.y-link{
+  cursor: pointer;
+}
+.y-link {
+  font-weight: 500;
+  font-size: 14px;
+}
+.y-link {
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: 0;
+  padding: 0;
+}
+.y-link.is-underline:hover:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  bottom: 0;
+  border-bottom: 1px solid #409eff;
+}
+.y-link.is-disabled {
+  cursor: not-allowed;
+}
+@each $color, $value in $colors {
+  .y-link.#{$color}
+  {
+    color:$value;
+  }
+  .y-link.#{$color}.is-underline:hover:after,
+  .y-link.#{$color}:after{
+    border-color: $value;
+  }
+}
+@each $color, $value in $disabled_colors {
+  .y-link.#{$color}.is-disabled
+  {
+    color:$value;
+  }
+}
+.y-link--inner{
+  display: flex;
+  display: inline-flex;
+  align-items: center;
+}
 </style>

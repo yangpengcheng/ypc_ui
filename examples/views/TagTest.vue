@@ -53,9 +53,8 @@
       <y-accordion-item title="尺寸">
         <p>标签尺寸(size:['large','medium','small','mini'])</p>
         <y-tag size="large">大号标签</y-tag>
-        <y-tag size="medium">中等标签</y-tag>
+        <y-tag size="default">中等标签</y-tag>
         <y-tag size="small">小型标签</y-tag>
-        <y-tag size="mini">超小标签</y-tag>
       </y-accordion-item>
       <y-accordion-item title="主题">
         <p>主题(effect:['light','dark','plain'])</p>

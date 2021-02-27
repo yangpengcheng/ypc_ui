@@ -17,16 +17,15 @@
         <p>禁用</p>
         <div>
           <y-radio v-model="radioVal" value="big" label="big" disabled class="col"></y-radio>
-          <y-radio v-model="radioVal" value="medium" label="medium" disabled class="col"></y-radio>
+          <y-radio v-model="radioVal" value="default" label="medium" disabled class="col"></y-radio>
         </div>
       </y-accordion-item>
       <y-accordion-item title="尺寸">
         <p>尺寸</p>
         <div>
           <y-radio v-model="radioVal2" value="1" label="1" size="large" class="col"></y-radio>
-          <y-radio v-model="radioVal2" value="2" label="2" size="medium" class="col"></y-radio>
+          <y-radio v-model="radioVal2" value="4" label="4" size="default" class="col"></y-radio>
           <y-radio v-model="radioVal2" value="3" label="3" size="small" class="col"></y-radio>
-          <y-radio v-model="radioVal2" value="4" label="4" size="mini" class="col"></y-radio>
           {{radioVal2}}
         </div>
       </y-accordion-item>

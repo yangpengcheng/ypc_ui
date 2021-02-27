@@ -4,12 +4,12 @@
       <y-accordion-item title="颜色">
         <div class="row">
           <p>color:['attention','danger','info','primary','success','warning'],默认为'primary'</p>
-          <y-checkbox v-model="checkVal" :value="1" label="注意" color="attention"/>
-          <y-checkbox v-model="checkVal" :value="2" label="危险" color="danger"/>
-          <y-checkbox v-model="checkVal" :value="3" label="信息" color="info" />
-          <y-checkbox v-model="checkVal" :value="4" label="主要" color="primary"/>
-          <y-checkbox v-model="checkVal" :value="5" label="成功" color="success"/>
-          <y-checkbox v-model="checkVal" :value="6" label="警告" color="warning"/>
+          <y-checkbox v-model="checkVal" :value="1" label="注意" color="attention" size="default"/>
+          <y-checkbox v-model="checkVal" :value="2" label="危险" color="danger" size="default"/>
+          <y-checkbox v-model="checkVal" :value="3" label="信息" color="info" size="default"/>
+          <y-checkbox v-model="checkVal" :value="4" label="主要" color="primary" size="default"/>
+          <y-checkbox v-model="checkVal" :value="5" label="成功" color="success" size="default"/>
+          <y-checkbox v-model="checkVal" :value="6" label="警告" color="warning" size="default"/>
           <br />{{ checkVal.toString() }}
         </div>
       </y-accordion-item>
@@ -26,11 +26,10 @@
       </y-accordion-item>
       <y-accordion-item title="尺寸">
         <div class="row">
-          <p>size:['big','medium','small','mini'],默认为'small'</p>
+          <p>size:['large','default','small'],默认为'small'</p>
           <y-checkbox label="注意" size="large" color="attention" :value="1" disabled v-model="checkVal"/>
-          <y-checkbox label="危险" size="medium" color="danger" :value="2" disabled v-model="checkVal"/>
+          <y-checkbox label="危险" size="default" color="danger" :value="2" disabled v-model="checkVal"/>
           <y-checkbox label="信息" size="small" color="info" :value="3" disabled v-model="checkVal"/>
-          <y-checkbox label="主要" size="mini" color="primary" :value="4" disabled v-model="checkVal"/>
         </div>
       </y-accordion-item>
       <y-accordion-item title="checkbox 组">
@@ -89,6 +88,7 @@ export default {
 .app-container p {
   color: #555;
   font-size: 12px;
+  margin-bottom: 5px;
 }
 .checkbox-container + .checkbox-container {
   margin-left: 10px;

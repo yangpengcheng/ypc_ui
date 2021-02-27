@@ -1,17 +1,7 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 @import './variables.scss';
-@import './button.scss';
 @import '../../node_modules/normalize.css/normalize.css';
-@import './alert.scss';
-@import './badge.scss';
-@import './checkbox.scss';
-@import './input.scss';
 @import './transition.scss';
-@import './link.scss';
-@import './progress.scss';
-@import './radio.scss';
-@import './slider.scss';
-@import './switch.scss';
-@import './tag.scss';
 
 *,*:before, *:after{
   margin: 0%;
@@ -19,9 +9,4 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-.fa.fa-cog:before{
-  height: 16px;
-  width:  16px;
 }

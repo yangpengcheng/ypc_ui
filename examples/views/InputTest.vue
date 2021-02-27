@@ -11,54 +11,62 @@
       </y-accordion-item>
       <y-accordion-item title="可清空">
         <p>clearable</p>
-        <y-input v-model="input" placeholder="请输入" clearable>
-          <template #clear>
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </template>
-        </y-input>
+        <y-input v-model="input" placeholder="请输入" clearable/>
       </y-accordion-item>
       <y-accordion-item title="密码框">
         <p>show-password</p>
-        <y-input v-model="input" placeholder="请输入" show-password>
-          <template #show-password>
-            <i class="fa fa-eye" aria-hidden="true"></i>
-          </template>
-          <template #hide-password>
-            <i class="fa fa-eye-slash" aria-hidden="true"></i>
-          </template>
-        </y-input>
+        <y-input v-model="input" placeholder="请输入" show-password/>
       </y-accordion-item>
       <y-accordion-item title="带图标">
         <p>prefix图标</p>
         <y-input v-model="input" @input="handleInput" placeholder="请输入">
           <template v-slot:prefix>
-            <i class="fa fa-address-card" aria-hidden="true"></i>
+            <i class="bi bi-bootstrap"></i>
           </template>
         </y-input>
         <p style="margin-top:5px">suffix图标</p>
         <y-input v-model="input" @input="handleInput" placeholder="请输入">
           <template v-slot:suffix>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <i class="bi bi-chat-dots"></i>
           </template>
         </y-input>
       </y-accordion-item>
       <y-accordion-item title="尺寸">
-        <p>尺寸(size['','medium','small','mini'])</p>
-        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="large"/>
-        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="medium"/>
-        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="small"/>
-        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="mini"/>
+        <p>尺寸(size['large','default','small'])</p>
+        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="large" clearable/>
+        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="default" clearable/>
+        <y-input v-model="input" @input="handleInput" placeholder="请输入" size="small" clearable/>
       </y-accordion-item>
       <y-accordion-item title="输入长度限制">
         <p>show-word-limit,maxlength</p>
         <y-input v-model="input" placeholder="请输入" show-word-limit maxlength="10"/>
       </y-accordion-item>
+      <y-accordion-item title="输入验证">
+        <p>opportunity:['change',blur]</p>
+        <p>validateFunc</p>
+        <y-input v-model="input" placeholder="请输入" :validateFunc="validateInput" opportunity="change"/>
+      </y-accordion-item>
+      <y-accordion-item title="自定义样式">
+        <p>自定义样式</p>
+        <y-input v-model="input" placeholder="请输入" class="customer"/>
+      </y-accordion-item>
       <y-accordion-item title="带标签">
         <p>带标签(获取焦点或输入框中有内容，标签会上移)</p>
-        <y-input v-model="input" label="Username" size="large"/>
-        <y-input v-model="input" label="Username" size="medium"/>
-        <y-input v-model="input" label="Username" size="small"/>
-        <y-input v-model="input" label="Username" size="mini"/>
+        <y-input v-model="input" label="Username" size="large">
+          <template v-slot:prefix>
+            <i class="bi bi-bootstrap"></i>
+          </template>
+        </y-input>
+        <y-input v-model="input" label="Username" size="default">
+          <template v-slot:prefix>
+            <i class="bi bi-bootstrap"></i>
+          </template>
+        </y-input>
+        <y-input v-model="input" label="Username" size="small">
+          <template v-slot:prefix>
+            <i class="bi bi-bootstrap"></i>
+          </template>
+        </y-input>
       </y-accordion-item>
       <y-accordion-item title="只有底边框">
         <p>只有底边框(line)</p>
@@ -109,9 +117,17 @@ export default {
     const handleInput = (val) => {
       console.log('input', val)
     }
+    const validateInput = (evt) => {
+      if (/e/.test(evt.target.value)) {
+        return Promise.resolve('correct')
+      } else {
+        return Promise.reject(new Error('incorrect'))
+      }
+    }
     return {
       input,
-      handleInput
+      handleInput,
+      validateInput
     }
   }
 }
@@ -123,5 +139,12 @@ export default {
 }
 .y-input {
   margin-top: 5px;
+}
+.customer {
+  border-color: #ffd53c;
+  padding-left: 5px;
+  border-radius: 6px;
+  height: 40px;
+  color: #29cc47;
 }
 </style>

@@ -29,7 +29,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'small',
+      default: 'default',
       validator: sizeValidator
     },
     radioData: {

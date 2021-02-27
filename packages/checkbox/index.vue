@@ -28,7 +28,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'small',
+      default: 'default',
       validator: sizeValidator
     },
     label: {
@@ -96,3 +96,169 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "../styles/variables.scss";
+.y-checkbox{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition:all .15s ease-out 0s;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  outline: none;
+  border-radius: 10%;
+}
+.checkbox-container{
+  display: flex;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.y-checkbox:before,.y-checkbox:after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  transition: all .2s ease-in-out;
+}
+.y-checkbox:before {
+  left: 2px;
+  top: 6px;
+  width: 0;
+  height: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.y-checkbox:after {
+  right: 9px;
+  bottom: 3px;
+  width: 3px;
+  height: 0;
+  transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transition-delay: .2s;
+}
+.y-checkbox:indeterminate:before,.y-checkbox:indeterminate:after {
+  width:calc(50% - 1px);
+  height: 2px;
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -ms-transform: rotate(0);
+  -o-transform: rotate(0);
+}
+.y-checkbox.default:indeterminate:before {
+  left: 1px;
+  top: 7px;
+}
+.y-checkbox.default:indeterminate:after {
+  right: 1px;
+  top: 7px;
+}
+.y-checkbox.large:indeterminate:before {
+  left: 1px;
+  top: 9px;
+}
+.y-checkbox.large:indeterminate:after {
+  right: 1px;
+  top: 9px;
+}
+.y-checkbox.small:indeterminate:before {
+  left: 1px;
+  top: 6px;
+}
+.y-checkbox.small:indeterminate:after {
+  right: 1px;
+  top: 6px;
+}
+@each $color, $value in $colors {
+  .y-checkbox.#{$color}{
+    border: 2px solid $value;
+  }
+  .y-checkbox.#{$color}:checked,.y-checkbox.#{$color}:indeterminate{
+    background: $value;
+  }
+}
+@each $color, $value in $disabled_colors {
+  .y-checkbox.#{$color}.disabled{
+    border: 2px solid $value;
+    cursor: not-allowed;
+  }
+  .y-checkbox.#{$color}.disabled:checked,.y-checkbox.#{$color}.disabled:indeterminate{
+    background: $value;
+  }
+}
+.y-checkbox.large{
+  margin-right: 5px;
+  height: 26px;
+  width: 26px;
+}
+.y-checkbox.default{
+  margin-right: 5px;
+  height: 22px;
+  width: 22px;
+}
+.y-checkbox.small{
+  margin-right: 5px;
+  height: 18px;
+  width: 18px;
+}
+.y-checkbox.small:checked:before {
+  left: 0px;
+  top: 9px;
+  width: 7px;
+  height: 2px;
+}
+.y-checkbox.small:checked:after {
+  right: 4px;
+  bottom: 0px;
+  width: 2px;
+  height: 13px;
+}
+.y-checkbox.default:checked:before {
+  left: 0px;
+  top: 13px;
+  width: 8px;
+  height: 2px;
+}
+.y-checkbox.default:checked:after {
+  right: 6px;
+  bottom: 0px;
+  width: 2px;
+  height: 15px;
+}
+.y-checkbox.large:checked:before {
+  left: 3px;
+  top: 13px;
+  width: 8px;
+  height: 2px;
+}
+.y-checkbox.large:checked:after {
+  right: 7px;
+  bottom: 3px;
+  width: 2px;
+  height: 16px;
+}
+.y-checkbox-label-large{
+  font-size: 16px;
+}
+.y-checkbox-label-default{
+  font-size: 14px;
+}
+.y-checkbox-label-small{
+  font-size: 12px;
+}
+</style>

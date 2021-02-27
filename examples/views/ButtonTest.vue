@@ -32,12 +32,12 @@
       </y-accordion-item>
       <y-accordion-item title="圆形按钮">
         <p>circle</p>
-        <y-button circle color="attention">注</y-button>
-        <y-button circle color="danger">危</y-button>
-        <y-button circle color="info">信</y-button>
-        <y-button circle color="primary">主</y-button>
-        <y-button circle color="success">成</y-button>
-        <y-button circle color="warning">警</y-button>
+        <y-button circle color="attention" iconClass="bi-alarm"></y-button>
+        <y-button circle color="danger" iconClass="bi-alarm"></y-button>
+        <y-button circle color="info" iconClass="bi-alarm"></y-button>
+        <y-button circle color="primary" iconClass="bi-alarm"></y-button>
+        <y-button circle color="success" iconClass="bi-alarm"></y-button>
+        <y-button circle color="warning" iconClass="bi-alarm"></y-button>
       </y-accordion-item>
       <y-accordion-item title="禁用状态">
         <p>disabled</p>
@@ -46,204 +46,71 @@
         <y-button disabled color="info">信息按钮</y-button>
         <y-button disabled color="primary">主要按钮</y-button>
         <y-button disabled color="success">成功按钮</y-button>
-        <y-button disabled color="warning">警告按钮</y-button>
+        <y-button disabled color="warning">警告按钮</y-button><br>
+        <y-button disabled plain color="attention">注意按钮</y-button>
+        <y-button disabled plain color="danger">危险按钮</y-button>
+        <y-button disabled plain color="info">信息按钮</y-button>
+        <y-button disabled plain color="primary">主要按钮</y-button>
+        <y-button disabled plain color="success">成功按钮</y-button>
+        <y-button disabled plain color="warning">警告按钮</y-button>
       </y-accordion-item>
       <y-accordion-item title="尺寸">
-        <p>size:['big','medium','small','mini'],默认为'small'</p>
-        <y-button size="large" color="attention">注意按钮</y-button>
-        <y-button size="large" round color="attention">注意按钮</y-button>
-        <y-button size="large" circle color="attention">注</y-button>
-        <y-button size="medium" color="danger">危险按钮</y-button>
-        <y-button size="medium" round color="danger">危险按钮</y-button>
-        <y-button size="medium" circle color="danger">危</y-button>
-        <y-button size="small" color="info">信息按钮</y-button>
-        <y-button size="small" round color="info">信息按钮</y-button>
-        <y-button size="small" circle color="info">信</y-button>
-        <y-button size="mini" color="primary">主要按钮</y-button>
-        <y-button size="mini" round color="primary">主要按钮</y-button>
-        <y-button size="mini" circle color="primary">主</y-button>
+        <p>size:['large','default','small'],默认为'small'</p>
+        <y-button size="large" color="danger">危险按钮</y-button>
+        <y-button size="large" round color="danger">危险按钮</y-button>
+        <y-button size="large" circle color="danger" iconClass="bi-alarm"></y-button>
+        <y-button size="default" color="info">信息按钮</y-button>
+        <y-button size="default" round color="info">信息按钮</y-button>
+        <y-button size="default" circle color="info" iconClass="bi-alarm"></y-button>
+        <y-button size="small" color="primary">主要按钮</y-button>
+        <y-button size="small" round color="primary">主要按钮</y-button>
+        <y-button size="small" circle color="primary" iconClass="bi-alarm"></y-button>
       </y-accordion-item>
-      <y-accordion-item title="图标(具名插槽)">
-        <p>具名插槽(icon)(例:使用fontawesome)</p>
-        <p>
-          在html插入 &lt;link rel="stylesheet"
-          href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
-        </p>
-        <y-button size="large" color="attention">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          注意按钮
-        </y-button>
-        <y-button size="large" round color="attention">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          注意按钮</y-button
-        >
-        <y-button size="large" circle color="attention">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-        </y-button>
-        <y-button size="medium" color="danger">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          危险按钮
-        </y-button>
-        <y-button size="medium" round color="danger">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          危险按钮
-        </y-button>
-        <y-button size="medium" circle color="danger">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-        </y-button>
-        <y-button size="small" color="info">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          信息按钮
-        </y-button>
-        <y-button size="small" round color="info">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          信息按钮
-        </y-button>
-        <y-button size="small" circle color="info">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-        </y-button>
-        <y-button size="mini" color="primary">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          主要按钮
-        </y-button>
-        <y-button size="mini" round color="primary">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-          主要按钮
-        </y-button>
-        <y-button size="mini" circle color="primary">
-          <template #icon>
-            <i class="fa fa-check-square" aria-hidden="true" />
-          </template>
-        </y-button>
+      <y-accordion-item title="图标(图标类名)">
+        <p>iconClass</p>
+        <y-button size="large" color="attention" iconClass="bi-alarm">闹钟</y-button>
+        <y-button size="large" round color="attention" iconClass="bi-alarm">闹钟</y-button>
+        <y-button size="large" circle color="attention" iconClass="bi-alarm"/>
+        <y-button size="default" color="danger" iconClass="bi-alarm">闹钟</y-button>
+        <y-button size="default" round color="danger" iconClass="bi-alarm">闹钟</y-button>
+        <y-button size="default" circle color="danger" iconClass="bi-alarm"/>
+        <y-button size="small" color="info" iconClass="bi-alarm">闹钟</y-button>
+        <y-button size="small" round color="info" iconClass="bi-alarm">闹钟</y-button>
+        <y-button size="small" circle color="info" iconClass="bi-alarm"/>
       </y-accordion-item>
       <y-accordion-item title="图标(默认插槽)">
-        <p>默认插槽(例:使用fontawesome)</p>
-        <p>
-          在html插入 &lt;link rel="stylesheet"
-          href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
-        </p>
+        <p>默认插槽</p>
         <y-button size="large" color="attention">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon large"
-              aria-hidden="true"
-            /><span>注意按钮</span>
-          </template>
+          <i class="bi bi-alarm large y-button__icon"/><span>闹钟</span>
         </y-button>
         <y-button size="large" round color="attention">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon large"
-              aria-hidden="true"
-            /><span>注意按钮</span>
-          </template>
+          <i class="bi bi-alarm large y-button__icon"/><span>闹钟</span>
         </y-button>
         <y-button size="large" circle color="attention">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon large"
-              aria-hidden="true"
-            />
-          </template>
+          <i class="bi bi-alarm large y-button__icon"/>
         </y-button>
-        <y-button size="medium" color="danger">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon medium"
-              aria-hidden="true"
-            /><span>危险按钮</span>
-          </template>
+        <y-button size="default" color="danger">
+          <i class="bi bi-alarm default y-button__icon"/><span>闹钟</span>
         </y-button>
-        <y-button size="medium" round color="danger">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon medium"
-              aria-hidden="true"
-            /><span>危险按钮</span>
-          </template>
+        <y-button size="default" round color="danger">
+          <i class="bi bi-alarm default y-button__icon"/><span>闹钟</span>
         </y-button>
-        <y-button size="medium" circle color="danger">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon medium"
-              aria-hidden="true"
-            />
-          </template>
+        <y-button size="default" circle color="danger">
+          <i class="bi bi-alarm default y-button__icon"/>
         </y-button>
         <y-button size="small" color="info">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon small"
-              aria-hidden="true"
-            /><span>信息按钮</span>
-          </template>
+          <i class="bi bi-alarm small y-button__icon"/><span>闹钟</span>
         </y-button>
         <y-button size="small" round color="info">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon small"
-              aria-hidden="true"
-            /><span>信息按钮</span>
-          </template>
+          <i class="bi bi-alarm small y-button__icon"/><span>闹钟</span>
         </y-button>
         <y-button size="small" circle color="info">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon small"
-              aria-hidden="true"
-            />
-          </template>
-        </y-button>
-        <y-button size="mini" color="primary">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon mini"
-              aria-hidden="true"
-            /><span>主要按钮</span>
-          </template>
-        </y-button>
-        <y-button size="mini" round color="primary">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon mini"
-              aria-hidden="true"
-            /><span>主要按钮</span>
-          </template>
-        </y-button>
-        <y-button size="mini" circle color="primary">
-          <template #default>
-            <i
-              class="fa fa-check-square y-button__icon mini"
-              aria-hidden="true"
-            />
-          </template>
+          <i class="bi bi-alarm small y-button__icon"/>
         </y-button>
       </y-accordion-item>
       <y-accordion-item title="加载中">
         <p>loading</p>
-        <y-button disabled loading>
+        <y-button loading>
           <template #loadingIcon>
             <i class="fa fa-spinner fa-pulse"></i>
           </template>
@@ -263,7 +130,8 @@
         <p>[options.trailing=true] (boolean): 指定调用在节流结束后。</p>
         <y-button :throttle="throttle" @click="click">注意按钮</y-button>
       </y-accordion-item>
-      <y-accordion-item title="结尾">
+      <y-accordion-item title="自定义样式">
+        <y-button class="customer">自定义按钮</y-button>
       </y-accordion-item>
     </y-accordion>
   </div>
@@ -296,5 +164,12 @@ export default {
 }
 .y-button + .y-button {
   margin-left: 5px;
+}
+.customer{
+  color: #c862cf;
+  background-color: white;
+  border: 1px solid #c862cf;
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 </style>

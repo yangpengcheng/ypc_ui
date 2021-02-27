@@ -29,12 +29,8 @@
         <y-link color="warning" :underline="false">警告链接</y-link>
       </y-accordion-item>
       <y-accordion-item title="带图标">
-        <p>图标</p>
-        <y-link color="success">查看
-          <template v-slot:icon>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </template>
-        </y-link>
+        <p>iconClass</p>
+        <y-link color="info" iconClass="bi-pencil-square">编辑</y-link>
       </y-accordion-item>
     </y-accordion>
   </div>

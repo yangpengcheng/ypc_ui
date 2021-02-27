@@ -1,146 +1,83 @@
 .border_bottom_left_right,
 .border_bottom_middle_edge,
-.border_bottom_edge_middle {
+.border_bottom_edge_middle,
+.border_bottom_top,
+.border_left_right,
+.border_right_left{
   border: 0;
-  padding: 7px 0;
   border-bottom: 1px solid #ccc;
   border-radius: 0px;
   background-color: transparent;
+  transition: 0.1s;
 }
-
-.border_bottom_left_right ~ label,
-.border_bottom_middle_edge ~ label,
-.border_bottom_edge_middle ~ label,
-.border_bottom_top ~ label,
-.border_left_right ~ label,
-.border_right_left ~ label,
-.background-general ~ label,
-.background-left-right ~ label,
-.background-middle-edge ~ label,
-.background-edge-middle ~ label,
-.background-diagonal ~ label,
-.background-center-edge ~ label {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  top: 9px;
-  color: #aaa;
-  transition: 0.3s;
-  z-index: -1;
-  letter-spacing: 0.5px;
+.border_bottom_left_right.is-focus,
+.border_bottom_middle_edge.is-focus,
+.border_bottom_edge_middle.is-focus,
+.border_bottom_top.is-focus,
+.border_left_right.is-focus,
+.border_right_left.is-focus{
+  border: 0;
+  transition: 0.1s;
 }
-.border_bottom_left_right:focus ~ label,
-.has-content.border_bottom_left_right ~ label,
-.border_bottom_middle_edge:focus ~ label,
-.has-content.border_bottom_middle_edge ~ label,
-.border_bottom_edge_middle:focus ~ label,
-.has-content.border_bottom_edge_middle ~ label,
-.border_bottom_top:focus ~ label,
-.has-content.border_bottom_top ~ label,
-.border_left_right:focus ~ label,
-.has-content.border_left_right ~ label,
-.border_right_left:focus ~ label,
-.has-content.border_right_left ~ label,
-.background-general:focus ~ label,
-.has-content.background-general ~ label,
-.background-left-right:focus ~ label,
-.has-content.background-left-right ~ label,
-.background-middle-edge:focus ~ label,
-.has-content.background-middle-edge ~ label,
-.background-edge-middle:focus ~ label,
-.has-content.background-edge-middle ~ label,
-.background-diagonal:focus ~ label,
-.has-content.background-diagonal ~ label,
-.background-center-edge:focus ~ label,
-.has-content.background-center-edge ~ label {
-  top: -16px;
-  font-size: 12px;
-  color: #3399ff;
-  transition: 0.3s;
-}
-
-
-
-.border_bottom_left_right ~ .focus-border {
+// border_bottom_left_right
+.border_bottom_left_right .focus-border {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 0;
-  height: 2px;
+  height: 1px;
   background-color: #3399ff;
   transition: 0.4s;
 }
-.border_bottom_left_right:focus ~ .focus-border {
+.border_bottom_left_right.is-focus .focus-border {
   width: 100%;
   transition: 0.4s;
 }
-
-.border_bottom_middle_edge ~ .focus-border {
+// border_bottom_middle_edge
+.border_bottom_middle_edge .focus-border {
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
-  height: 2px;
+  height: 1px;
   background-color: #3399ff;
   transition: 0.4s;
 }
-.border_bottom_middle_edge:focus ~ .focus-border {
+.border_bottom_middle_edge.is-focus .focus-border {
   width: 100%;
   transition: 0.4s;
   left: 0;
 }
-
-.border_bottom_edge_middle ~ .focus-border {
+// border_bottom_edge_middle
+.border_bottom_edge_middle.is-focus .focus-border {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 1px;
   z-index: 99;
 }
-.border_bottom_edge_middle ~ .focus-border:before,
-.border_bottom_edge_middle ~ .focus-border:after {
+.border_bottom_edge_middle .focus-border:before,
+.border_bottom_edge_middle .focus-border:after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: 100%;
-  background-color: #3399ff;
+  height: 1px;
   transition: 0.4s;
+  background-color: #3399ff;
 }
-.border_bottom_edge_middle ~ .focus-border:after {
+.border_bottom_edge_middle .focus-border:after {
   left: auto;
   right: 0;
 }
-.border_bottom_edge_middle:focus ~ .focus-border:before,
-.border_bottom_edge_middle:focus ~ .focus-border:after {
-  width: 50%;
+.border_bottom_edge_middle.is-focus .focus-border:before,
+.border_bottom_edge_middle.is-focus .focus-border:after {
+  width: 51%;
   transition: 0.4s;
 }
-
-.border_bottom_top,
-.border_left_right,
-.border_right_left {
-  border: 0;
-  padding: 5px 0 7px;
-  border-radius: 0px;
-  border: 1px solid transparent;
-  border-bottom-color: #ccc;
-  transition: 0.4s;
-  background-color: transparent;
-}
-
-.border_bottom_top:focus,
-.border_left_right:focus,
-.border_right_left:focus {
-  border: none;
-  padding: 5px 14px 7px;
-  transition: 0.4s;
-  border-radius: 4px;
-}
-
-.border_bottom_top ~ .focus-border {
+// border_bottom_top
+.border_bottom_top .focus-border {
   position: absolute;
   height: 0;
   bottom: 0;
@@ -149,188 +86,195 @@
   transition: 0.4s;
   z-index: -1;
 }
-.border_bottom_top:focus ~ .focus-border {
+.border_bottom_top.is-focus .focus-border {
   transition: 0.4s;
-  height: 36px;
-  border: 2px solid #3399ff;
+  height: 28px;
+  border: 1px solid #3399ff;
   border-radius: 4px;
   z-index: 1;
 }
-
-.border_left_right ~ .focus-border {
+// border_left_right
+.border_left_right .focus-border {
   position: absolute;
-  height: 36px;
+  height: 28px;
   bottom: 0;
   left: 0;
   width: 0;
   transition: 0.4s;
 }
-.border_left_right:focus ~ .focus-border {
+.border_left_right.is-focus .focus-border {
   width: 100%;
   transition: 0.4s;
-  border: 2px solid #3399ff;
+  border: 1px solid #3399ff;
   border-radius: 4px;
 }
-
-.border_right_left ~ .focus-border {
+// border_right_left
+.border_right_left .focus-border {
   position: absolute;
-  height: 36px;
+  height: 28px;
   bottom: 0;
   right: 0;
   width: 0;
   transition: 0.4s;
 }
-.border_right_left:focus ~ .focus-border {
+.border_right_left.is-focus .focus-border {
   width: 100%;
   transition: 0.4s;
-  border: 2px solid #3399ff;
+  border: 1px solid #3399ff;
   border-radius: 4px;
 }
-
-
 .background-general,
 .background-left-right,
 .background-middle-edge,
 .background-edge-middle,
 .background-diagonal,
 .background-center-edge {
-  border: 0;
-  padding: 7px 15px;
   border: 1px solid #ccc;
   position: relative;
   background: transparent;
 }
-
-.background-general ~ .focus-border {
+.background-general .focus-border {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #ededed;
+  background-color: #cccccc;
   opacity: 0;
-  transition: 0.5s;
+  transition: 0.3s;
   z-index: -1;
 }
-.background-general:focus ~ .focus-border {
-  transition: 0.5s;
+.background-general.is-focus .focus-border {
+  transition: 0.3s;
   opacity: 1;
 }
-
-.background-left-right ~ .focus-border {
+.background-left-right .focus-border {
   position: absolute;
   left: 0;
   top: 0;
   width: 0;
   height: 100%;
-  background-color: #ededed;
+  background-color: #cccccc;
   transition: 0.3s;
   z-index: -1;
 }
-.background-left-right:focus ~ .focus-border {
+.background-left-right.is-focus .focus-border {
   transition: 0.3s;
   width: 100%;
 }
-
-.background-middle-edge ~ .focus-border {
+.background-middle-edge .focus-border {
   position: absolute;
   left: 50%;
   top: 0;
   width: 0;
   height: 100%;
-  background-color: #ededed;
+  background-color: #cccccc;
   transition: 0.3s;
   z-index: -1;
 }
-.background-middle-edge:focus ~ .focus-border {
+.background-middle-edge.is-focus .focus-border {
   transition: 0.3s;
   width: 100%;
   left: 0;
 }
-
-.background-edge-middle ~ .focus-border:before,
-.background-edge-middle ~ .focus-border:after {
+.background-edge-middle .focus-border:before,
+.background-edge-middle .focus-border:after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 0;
   height: 100%;
-  background-color: #ededed;
+  background-color: #cccccc;
   transition: 0.3s;
   z-index: -1;
 }
-.background-edge-middle:focus ~ .focus-border:before {
+.background-edge-middle.is-focus .focus-border:before {
   transition: 0.3s;
   width: 50%;
 }
-.background-edge-middle ~ .focus-border:after {
+.background-edge-middle .focus-border:after {
   left: auto;
   right: 0;
 }
-.background-edge-middle:focus ~ .focus-border:after {
+.background-edge-middle.is-focus .focus-border:after {
   transition: 0.3s;
   width: 50%;
 }
 
-.background-diagonal ~ .focus-border:before,
-.background-diagonal ~ .focus-border:after {
+.background-diagonal .focus-border:before,
+.background-diagonal .focus-border:after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 0;
   height: 0;
-  background-color: #ededed;
+  background-color: #cccccc;
   transition: 0.3s;
   z-index: -1;
 }
-.background-diagonal:focus ~ .focus-border:before {
+.background-diagonal.is-focus .focus-border:before {
   transition: 0.3s;
   width: 50%;
   height: 100%;
 }
-.background-diagonal ~ .focus-border:after {
+.background-diagonal .focus-border:after {
   left: auto;
   right: 0;
   top: auto;
   bottom: 0;
 }
-.background-diagonal:focus ~ .focus-border:after {
+.background-diagonal.is-focus .focus-border:after {
   transition: 0.3s;
   width: 50%;
   height: 100%;
 }
 
-.background-center-edge ~ .focus-border:before,
-.background-center-edge ~ .focus-border:after {
+.background-center-edge .focus-border:before,
+.background-center-edge .focus-border:after {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
   width: 0;
   height: 0;
-  background-color: #ededed;
+  background-color: #cccccc;
   transition: 0.3s;
   z-index: -1;
 }
-.background-center-edge:focus ~ .focus-border:before {
+.background-center-edge.is-focus .focus-border:before {
   transition: 0.3s;
   width: 50%;
   left: 0;
   top: 0;
   height: 100%;
 }
-.background-center-edge ~ .focus-border:after {
+.background-center-edge .focus-border:after {
   left: auto;
   right: 50%;
   top: auto;
   bottom: 50%;
 }
-.background-center-edge:focus ~ .focus-border:after {
+.background-center-edge.is-focus .focus-border:after {
   transition: 0.3s;
   width: 50%;
   height: 100%;
   bottom: 0;
   right: 0;
+}
+.has-transition label{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 7px;
+  color: #aaa;
+  transition: 0.4s;
+  z-index: -1;
+}
+.has-transition.is-focus label{
+  top: -20px;
+  font-size: inherit;
+  color: #3399ff;
+  transition: 0.4s;
 }

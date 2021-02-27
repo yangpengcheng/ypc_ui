@@ -240,3 +240,130 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.y-progress-bar__inner::after,
+.y-row::after,
+.y-row::before,
+.y-slider::after,
+.y-slider::before,
+.y-slider__button-wrapper::after,
+.y-upload-cover::after {
+  content: "";
+}
+.y-progress {
+  position: relative;
+  line-height: 1;
+}
+.y-progress__text {
+  font-size: 14px;
+  color: #606266;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  line-height: 1;
+}
+.y-progress__text i {
+  display: block;
+}
+.y-progress--circle,
+.y-progress--dashboard {
+  display: inline-block;
+}
+.y-progress--circle .y-progress__text,
+.y-progress--dashboard .y-progress__text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.y-progress--circle .y-progress__text i,
+.y-progress--dashboard .y-progress__text i {
+  vertical-align: middle;
+  display: inline-block;
+}
+.y-progress--without-text .y-progress__text {
+  display: none;
+}
+.y-progress--without-text .y-progress-bar {
+  padding-right: 0;
+  margin-right: 0;
+  display: block;
+}
+.y-progress-bar,
+.y-progress-bar__inner::after,
+.y-progress-bar__innerText,
+.y-spinner {
+  display: inline-block;
+  vertical-align: middle;
+}
+.y-progress--text-inside .y-progress-bar {
+  padding-right: 0;
+  margin-right: 0;
+}
+.y-progress.is-success .y-progress-bar__inner {
+  background-color: #67c23a;
+}
+.y-progress.is-success .y-progress__text {
+  color: #67c23a;
+}
+.y-progress.is-warning .y-progress-bar__inner {
+  background-color: #e6a23c;
+}
+.y-progress.is-warning .y-progress__text {
+  color: #e6a23c;
+}
+.y-progress.is-exception .y-progress-bar__inner {
+  background-color: #f56c6c;
+}
+.y-progress.is-exception .y-progress__text {
+  color: #f56c6c;
+}
+.y-progress-bar {
+  padding-right: 50px;
+  width: 100%;
+  margin-right: -55px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.y-progress-bar__outer {
+  height: 6px;
+  border-radius: 100px;
+  background-color: #ebeef5;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+.y-progress-bar__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #409eff;
+  text-align: right;
+  border-radius: 100px;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+.y-progress-bar__inner::after {
+  height: 100%;
+}
+.y-progress-bar__innerText {
+  color: #fff;
+  font-size: 12px;
+  margin: 0 5px;
+}
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 32px 0;
+  }
+}
+</style>
