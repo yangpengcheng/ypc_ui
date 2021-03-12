@@ -76,7 +76,7 @@ export default {
   cursor: not-allowed;
   background-color: #D3DCE6;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-switch.#{$color} > input[type="checkbox"]:checked + .y-switch-style{
     background: $value;
   }

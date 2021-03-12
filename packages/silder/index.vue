@@ -79,13 +79,13 @@ export default {
   border-radius: 50%;
   cursor: pointer;
 }
-@each $color, $value in $plain_background_colors {
+@each $color, $value in $outline_colors {
   .y-slider.#{$color}
   {
     background:$value
   }
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-slider.#{$color}::-webkit-slider-thumb
   {
     background:$value

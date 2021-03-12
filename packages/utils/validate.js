@@ -6,6 +6,9 @@ export const sizeValidator = (size) => {
   return ['large', 'default', 'small', null].includes(size)
 }
 
+export const effectValidator = (size) => {
+  return ['light', 'dark', 'outline'].includes(size)
+}
 const typeValidator = (o, type) => {
   return ['undefined', type].includes(typeof o)
 }

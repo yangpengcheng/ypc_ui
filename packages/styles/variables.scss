@@ -1,32 +1,42 @@
-$colors: (
-  "attention": #ffd53c,
-  "danger": #ff533d,
-  "info": #909396,
-  "primary": #4083ff,
-  "success": #29cc47,
-  "warning": #ff9e42,
+$default_colors: (
+  "attention": rgb(255,210,42),
+  "danger": rgb(255,72,48),
+  "info": rgb(144,147,150),
+  "primary": rgb(63,128,234),
+  "success": rgb(48,204,35),
+  "warning": rgb(255,148,49),
 );
-
-// alpha = 0.5
+$outline_colors: (
+  "attention": rgba(255,210,42,0.8),
+  "danger": rgba(255,72,48,0.8),
+  "info": rgba(144,147,150,0.8),
+  "primary": rgba(63,128,234,0.8),
+  "success": rgba(48,204,35,0.8),
+  "warning": rgba(255,148,49,0.8),
+);
+$light_colors: (
+  "attention": rgba(255,210,42,0.9),
+  "danger": rgba(255,72,48,0.9),
+  "info": rgba(144,147,150,0.9),
+  "primary": rgba(63,128,234,0.9),
+  "success": rgba(48,204,35,0.9),
+  "warning": rgba(255,148,49,0.9),
+);
+$light_bg_colors: (
+  "attention": rgba(255,210,42,0.5),
+  "danger": rgba(255,72,48,0.5),
+  "info": rgba(144,147,150,0.5),
+  "primary": rgba(63,128,234,0.5),
+  "success": rgba(48,204,35,0.5),
+  "warning": rgba(255,148,49,0.5),
+);
 $disabled_colors: (
-  "attention": #fff097,
-  "danger": #ffab9a,
-  "info": #a4a7ab,
-  "primary": #86bdff,
-  "success": #97e6a6,
-  "warning": #ffdaa6,
-);
-
-
-
-// alpha = 0.2
-$plain_background_colors:(
-  "attention": #faf4d5,
-  "danger": #fde2e2,
-  "info": #e9e9eb,
-  "primary": #d9ecff,
-  "success": #e1f3d8,
-  "warning": #faecd8,
+  "attention": rgba(255,210,42,0.4),
+  "danger": rgba(255,72,48,0.4),
+  "info": rgba(144,147,150,0.4),
+  "primary": rgba(63,128,234,0.4),
+  "success": rgba(48,204,35,0.4),
+  "warning": rgba(255,148,49,0.4),
 );
 $font_size: (
   "large": 16px,

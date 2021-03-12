@@ -99,7 +99,7 @@ export default {
   white-space: nowrap;
 }
 // is-hit
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-tag.#{$color}.is-hit{
     border-color: $value;
   }
@@ -111,7 +111,7 @@ export default {
   }
 }
 // y-tag__close
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-tag.#{$color} .y-tag__close{
     color: $value;
   }
@@ -121,7 +121,7 @@ export default {
   }
 }
 //.y-tag--dark
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-tag--dark.#{$color} .y-tag__close{
     color: #fff;
   }
@@ -131,12 +131,12 @@ export default {
   }
 }
 // y-tag
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-tag.#{$color}{
     color: $value;
   }
 }
-@each $color, $value in $plain_background_colors {
+@each $color, $value in $outline_colors {
   .y-tag.#{$color}{
     background-color: $value;
   }
@@ -146,7 +146,7 @@ export default {
     border-color: $value;
   }
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-tag--dark.#{$color}{
     border-color: $value;
     background-color:$value;
@@ -154,7 +154,7 @@ export default {
     color: #fff;
   }
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-tag--plain.#{$color}{
     border-color: $value;
     background-color:#fff;

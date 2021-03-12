@@ -12,23 +12,26 @@
         <y-button color="success">成功按钮</y-button>
         <y-button color="warning">警告按钮</y-button>
       </y-accordion-item>
-      <y-accordion-item title="朴素按钮">
-        <p>plain</p>
-        <y-button plain color="attention">注意按钮</y-button>
-        <y-button plain color="danger">危险按钮</y-button>
-        <y-button plain color="info">信息按钮</y-button>
-        <y-button plain color="primary">主要按钮</y-button>
-        <y-button plain color="success">成功按钮</y-button>
-        <y-button plain color="warning">警告按钮</y-button>
-      </y-accordion-item>
-      <y-accordion-item title="圆角按钮">
-        <p>round</p>
-        <y-button round color="attention">注意按钮</y-button>
-        <y-button round color="danger">危险按钮</y-button>
-        <y-button round color="info">信息按钮</y-button>
-        <y-button round color="primary">主要按钮</y-button>
-        <y-button round color="success">成功按钮</y-button>
-        <y-button round color="warning">警告按钮</y-button>
+      <y-accordion-item title="效果">
+        <p>color:['light','dark','outline'],默认为'dark'</p>
+        <y-button color="attention">注意按钮</y-button>
+        <y-button color="danger">危险按钮</y-button>
+        <y-button color="info">信息按钮</y-button>
+        <y-button color="primary">主要按钮</y-button>
+        <y-button color="success">成功按钮</y-button>
+        <y-button color="warning">警告按钮</y-button><br>
+        <y-button effect="light" color="attention">注意按钮</y-button>
+        <y-button effect="light" color="danger">危险按钮</y-button>
+        <y-button effect="light" color="info">信息按钮</y-button>
+        <y-button effect="light" color="primary">主要按钮</y-button>
+        <y-button effect="light" color="success">成功按钮</y-button>
+        <y-button effect="light" color="warning">警告按钮</y-button><br>
+        <y-button effect="outline" color="attention">注意按钮</y-button>
+        <y-button effect="outline" color="danger">危险按钮</y-button>
+        <y-button effect="outline" color="info">信息按钮</y-button>
+        <y-button effect="outline" color="primary">主要按钮</y-button>
+        <y-button effect="outline" color="success">成功按钮</y-button>
+        <y-button effect="outline" color="warning">警告按钮</y-button>
       </y-accordion-item>
       <y-accordion-item title="圆形按钮">
         <p>circle</p>
@@ -47,12 +50,18 @@
         <y-button disabled color="primary">主要按钮</y-button>
         <y-button disabled color="success">成功按钮</y-button>
         <y-button disabled color="warning">警告按钮</y-button><br>
-        <y-button disabled plain color="attention">注意按钮</y-button>
-        <y-button disabled plain color="danger">危险按钮</y-button>
-        <y-button disabled plain color="info">信息按钮</y-button>
-        <y-button disabled plain color="primary">主要按钮</y-button>
-        <y-button disabled plain color="success">成功按钮</y-button>
-        <y-button disabled plain color="warning">警告按钮</y-button>
+        <y-button disabled effect="light" color="attention">注意按钮</y-button>
+        <y-button disabled effect="light" color="danger">危险按钮</y-button>
+        <y-button disabled effect="light" color="info">信息按钮</y-button>
+        <y-button disabled effect="light" color="primary">主要按钮</y-button>
+        <y-button disabled effect="light" color="success">成功按钮</y-button>
+        <y-button disabled effect="light" color="warning">警告按钮</y-button><br>
+        <y-button disabled effect="outline" color="attention">注意按钮</y-button>
+        <y-button disabled effect="outline" color="danger">危险按钮</y-button>
+        <y-button disabled effect="outline" color="info">信息按钮</y-button>
+        <y-button disabled effect="outline" color="primary">主要按钮</y-button>
+        <y-button disabled effect="outline" color="success">成功按钮</y-button>
+        <y-button disabled effect="outline" color="warning">警告按钮</y-button>
       </y-accordion-item>
       <y-accordion-item title="尺寸">
         <p>size:['large','default','small'],默认为'small'</p>
@@ -166,9 +175,9 @@ export default {
   margin-left: 5px;
 }
 .customer{
-  color: #c862cf;
-  background-color: white;
-  border: 1px solid #c862cf;
+  color: #c862cf !important;
+  background-color: white !important;
+  border: 1px solid #c862cf !important;
   padding: 10px 20px;
   border-radius: 6px;
 }

@@ -110,7 +110,7 @@ export default {
   width: 6px;
   height: 6px;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-radio.#{$color}{
     border: 2px solid $value;
   }

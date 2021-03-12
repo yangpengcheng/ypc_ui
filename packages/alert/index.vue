@@ -120,19 +120,19 @@ export default {
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-alert.#{$color}
   {
     color:$value;
   }
 }
-@each $color, $value in $plain_background_colors {
+@each $color, $value in $outline_colors {
   .y-alert.#{$color}
   {
     background-color:$value;
   }
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-alert.#{$color}.is-dark
   {
     color: #fff;
@@ -170,7 +170,7 @@ export default {
 .y-alert.is-dark .y-alert__description {
   color: #fff;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-alert.#{$color} .y-alert__description
   {
     color:$value;

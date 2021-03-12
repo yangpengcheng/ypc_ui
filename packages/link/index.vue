@@ -86,7 +86,7 @@ export default {
 .y-link.is-disabled {
   cursor: not-allowed;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-link.#{$color}
   {
     color:$value;

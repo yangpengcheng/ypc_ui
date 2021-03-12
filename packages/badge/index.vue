@@ -87,7 +87,7 @@ export default {
   right: 0;
   border-radius: 50%;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-badge__content.#{$color}
   {
     background-color: $value;

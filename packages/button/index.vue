@@ -2,46 +2,42 @@
   <button
     :class="[
       'y-button',
-      buttonSize,
+      size,
       color,
+      `e-${effect}`,
       {
         'is-disabled': buttonDisabled,
-        'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
         'is-circle': circle
       }
     ]"
-    :disabled="buttonDisabled || loading"
-    :autofocus="autofocus"
+    :disabled="buttonDisabled"
     @click="handleClick"
   >
-    <div class="y-button__innner">
+    <div class="y-button__inside">
       <template v-if="!loading && iconClass">
-        <i :class="['bi y-button__icon', iconClass, buttonSize]"></i>
+        <i :class="['bi y-button__icon', iconClass]"/>
       </template>
       <template v-if="loading">
-        <i :class="['bi bi-dash-circle fa-pulse y-button__icon',buttonSize]"></i>
+        <i :class="['bi bi-arrow-clockwise icon-loading y-button__icon']"/>
       </template>
-      <span v-if="$slots.default" :class="['y-button__slot', buttonSize]"
-        ><slot></slot
-      ></span>
+      <span v-if="$slots.default" :class="['y-button__slot']"
+        ><slot/></span>
     </div>
   </button>
 </template>
-
 <script>
 import { computed } from 'vue'
+import { CLICK } from '../utils/constant.js'
 import {
   colorValidator,
   sizeValidator,
+  effectValidator,
   debounceValidator,
   throttleValidator
 } from '../utils/validate.js'
-
 export default {
   name: 'YButton',
-  emits: ['click'],
+  emits: [CLICK],
   props: {
     color: {
       type: String,
@@ -50,16 +46,19 @@ export default {
     },
     size: {
       type: String,
+      default: 'default',
       validator: sizeValidator
+    },
+    effect: {
+      type: String,
+      default: 'dark',
+      validator: effectValidator
     },
     iconClass: {
       type: String
     },
     loading: Boolean,
     disabled: Boolean,
-    plain: Boolean,
-    autofocus: Boolean,
-    round: Boolean,
     circle: Boolean,
     debounce: {
       type: Object,
@@ -70,28 +69,26 @@ export default {
       validator: throttleValidator
     }
   },
-  setup (props, ctx) {
+  setup (props, { emit }) {
     const _ = require('lodash')
-    const buttonSize = computed(() => props.size || 'default')
     const buttonDisabled = computed(() => props.disabled || props.loading)
     var handleClick = (evt) => {
-      ctx.emit('click', evt)
+      emit(CLICK, evt)
     }
     if (props.debounce) {
       handleClick = _.debounce(
-        (evt) => ctx.emit('click', evt),
+        (evt) => emit(CLICK, evt),
         props.debounce.wait,
         props.debounce.options
       )
     } else if (props.throttle) {
       handleClick = _.throttle(
-        (evt) => ctx.emit('click', evt),
+        (evt) => emit(CLICK, evt),
         props.throttle.wait,
         props.throttle.options
       )
     }
     return {
-      buttonSize,
       buttonDisabled,
       handleClick
     }
@@ -100,44 +97,34 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/variables.scss";
+// 基本样式
 .y-button {
   display: inline-block;
-  line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  background: #fff;
+  line-height: 1;
   border: 1px solid #fff;
-  text-align: center;
   outline: 0;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
   font-weight: 500;
   min-width: 60px;
 }
 .y-button::-moz-focus-inner {
   border: 0;
 }
-.y-button__innner,
+// 内部布局
+.y-button__inside,
 .y-button__slot{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-@each $size, $value in $font_size {
-  .y-button__icon.#{$size}
-  {
-    width: $value;
-    height: $value;
-  }
-}
+// 禁用光标
 .y-button.is-disabled{
   cursor: not-allowed;
 }
-.y-button [class*="y-button__icon"] + span {
-  margin-left: 5px;
-}
-@each $color, $value in $colors {
-  .y-button.#{$color}
+// 效果
+@each $color, $value in $default_colors {
+  .y-button.#{$color}.e-dark
   {
     color: #fff;
     background-color: $value;
@@ -145,18 +132,14 @@ export default {
   }
 }
 @each $color, $value in $disabled_colors {
-  .y-button.#{$color}.is-disabled,
-  .y-button.#{$color}.is-disabled:active,
-  .y-button.#{$color}.is-disabled:focus,
-  .y-button.#{$color}.is-disabled:hover
+  .y-button.#{$color}.e-dark.is-disabled
   {
-    color: #fff;
     background-color: $value;
     border-color: $value;
   }
 }
-@each $color, $value in $colors {
-  .y-button.#{$color}.is-plain
+@each $color, $value in $outline_colors {
+  .y-button.#{$color}.e-outline
   {
     color: $value;
     background-color: #fff;
@@ -164,67 +147,57 @@ export default {
   }
 }
 @each $color, $value in $disabled_colors {
-  .y-button.#{$color}.is-plain.is-disabled,
-  .y-button.#{$color}.is-plain.is-disabled:active,
-  .y-button.#{$color}.is-plain.is-disabled:focus,
-  .y-button.#{$color}.is-plain.is-disabled:hover
+  .y-button.#{$color}.e-outline.is-disabled
   {
     color: $value;
-    background-color: #fff;
     border-color: $value;
   }
 }
-.y-button.is-loading {
-  position: relative;
-  cursor: not-allowed;
+@each $color, $value in $light_colors {
+  .y-button.#{$color}.e-light
+  {
+    color: $value;
+  }
 }
-.y-button.is-loading:before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: -1px;
-  right: -1px;
-  bottom: -1px;
-  border-radius: inherit;
-  background-color: rgba(255, 255, 255, 0.35);
+@each $color, $value in $light_bg_colors {
+  .y-button.#{$color}.e-light
+  {
+    background-color: $value;
+    border-color: $value;
+  }
 }
-.y-button.is-round{
-  border-radius: 6px;
+@each $color, $value in $disabled_colors {
+  .y-button.#{$color}.e-light.is-disabled
+  {
+    color: $value;
+    background-color: $value;
+    border-color: $value;
+  }
 }
 .y-button.is-circle {
   min-width: 0;
   border-radius: 50%;
 }
-.y-button.large.is-circle{
-  padding: 7px;
-}
-.y-button.default.is-circle{
-  padding: 5px;
-}
-.y-button.small.is-circle{
-  padding: 5px;
-}
-@each $color, $value in $font_size {
-  .y-button.#{$color}
+@each $size, $value in $font_size {
+  .y-button.#{$size}
   {
     font-size: $value;
+    padding: ($value/2)-1;
+  }
+  .y-button.#{$size} .y-button__icon{
+    font-size: $value;
+    width: $value;
+    height: $value;
+  }
+  .y-button.#{$size} [class*="y-button__icon"] + *{
+    margin-left: ($value/2)-1;
   }
 }
-.y-button.large{
-  padding: 7px 16px;
+.icon-loading::before {
+  -webkit-animation: spin 1s infinite steps(8);
+  animation: spin 1s infinite steps(8);
 }
-.y-button.default{
-  padding: 6px 11px;
-}
-.y-button.small{
-  padding: 5px 11px;
-}
-
-.fa-pulse::before {
-  -webkit-animation: fa-spin 1s infinite steps(8);
-  animation: fa-spin 1s infinite steps(8);
-}
-@-webkit-keyframes fa-spin {
+@-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -234,7 +207,7 @@ export default {
     transform: rotate(359deg);
   }
 }
-@keyframes fa-spin {
+@keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);

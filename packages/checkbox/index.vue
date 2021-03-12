@@ -184,7 +184,7 @@ export default {
   right: 1px;
   top: 6px;
 }
-@each $color, $value in $colors {
+@each $color, $value in $default_colors {
   .y-checkbox.#{$color}{
     border: 2px solid $value;
   }
