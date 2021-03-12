@@ -32,11 +32,6 @@ const routes = [
     component: () => import('../views/LinkTest.vue')
   },
   {
-    path: '/progress',
-    name: 'Progress',
-    component: () => import('../views/ProgressTest.vue')
-  },
-  {
     path: '/radio',
     name: 'Radio',
     component: () => import('../views/RadioTest.vue')
@@ -60,11 +55,6 @@ const routes = [
     path: '/menu',
     name: 'Menu',
     component: () => import('../views/MenuTest.vue')
-  },
-  {
-    path: '/test',
-    name: 'Test',
-    component: () => import('../views/Test.vue')
   }
 ]
 

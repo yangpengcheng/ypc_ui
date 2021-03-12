@@ -7,15 +7,11 @@ import CheckBox from './checkbox'
 import CheckBoxGroup from './checkbox/checkbox-group.vue'
 import Input from './input'
 import Link from './link'
-import Progress from './progress'
 import Radio from './radio'
 import RadioGroup from './radio/radio-group.vue'
 import Silder from './silder'
 import Switch from './switch'
 import Tag from './tag'
-import Menu from './menu/Menu.vue'
-import MenuItem from './menu/MenuItem.vue'
-import SubMenu from './menu/SubMenu.vue'
 
 import './styles/index.scss'
 
@@ -29,15 +25,11 @@ const components = [
   CheckBoxGroup,
   Input,
   Link,
-  Progress,
   Radio,
   RadioGroup,
   Switch,
   Tag,
-  Silder,
-  Menu,
-  MenuItem,
-  SubMenu
+  Silder
 ]
 
 const install = Vue => {
@@ -57,13 +49,9 @@ export default {
   CheckBoxGroup,
   Input,
   Link,
-  Progress,
   Radio,
   RadioGroup,
   Switch,
   Tag,
-  Silder,
-  Menu,
-  MenuItem,
-  SubMenu
+  Silder
 }
