@@ -10,31 +10,32 @@
         <y-alert title="成功提示的文案" color="success"/>
         <y-alert title="警告提示的文案" color="warning"/>
       </y-accordion-item>
-      <y-accordion-item title="样式[light]">
-        <p>默认light</p>
+      <y-accordion-item title="效果">
+        <p>effect:['light','dark','outline'],默认为'dark'</p>
+        <y-alert title="注意提示的文案" color="attention"/>
+        <y-alert title="错误提示的文案" color="danger"/>
+        <y-alert title="信息提示的文案" color="info"/>
+        <y-alert title="主要提示的文案" color="primary"/>
+        <y-alert title="成功提示的文案" color="success"/>
+        <y-alert title="警告提示的文案" color="warning"/>
         <y-alert title="注意提示的文案" effect="light" color="attention"/>
         <y-alert title="错误提示的文案" effect="light" color="danger"/>
         <y-alert title="信息提示的文案" effect="light" color="info"/>
         <y-alert title="主要提示的文案" effect="light" color="primary"/>
         <y-alert title="成功提示的文案" effect="light" color="success"/>
         <y-alert title="警告提示的文案" effect="light" color="warning"/>
-      </y-accordion-item>
-      <y-accordion-item title="样式[dark]">
-        <p>dark</p>
-        <y-alert title="注意提示的文案" effect="dark" color="attention"/>
-        <y-alert title="错误提示的文案" effect="dark" color="danger"/>
-        <y-alert title="信息提示的文案" effect="dark" color="info"/>
-        <y-alert title="主要提示的文案" effect="dark" color="primary"/>
-        <y-alert title="成功提示的文案" effect="dark" color="success"/>
-        <y-alert title="警告提示的文案" effect="dark" color="warning"/>
+        <y-alert title="注意提示的文案" effect="outline" color="attention"/>
+        <y-alert title="错误提示的文案" effect="outline" color="danger"/>
+        <y-alert title="信息提示的文案" effect="outline" color="info"/>
+        <y-alert title="主要提示的文案" effect="outline" color="primary"/>
+        <y-alert title="成功提示的文案" effect="outline" color="success"/>
+        <y-alert title="警告提示的文案" effect="outline" color="warning"/>
       </y-accordion-item>
       <y-accordion-item title="自定义关闭选项">
-        <div class="row">
-          <p>自定义关闭选项[不显示关闭按钮,显示为自定义文字,显示关闭按钮(默认)]</p>
-            <y-alert title="注意提示的文案"  color="attention"  :closable="false"/>
-            <y-alert title="错误提示的文案"  color="danger" close-text="知道了"/>
-            <y-alert title="信息提示的文案"  color="info"/>
-        </div>
+        <p>自定义关闭选项[不显示关闭按钮,显示为自定义文字,显示关闭按钮(默认)]</p>
+        <y-alert title="注意提示的文案"  color="attention"  :closable="false"/>
+        <y-alert title="错误提示的文案"  color="danger" close-text="知道了"/>
+        <y-alert title="信息提示的文案"  color="info"/>
       </y-accordion-item>
       <y-accordion-item title="图标">
         <div class="row">

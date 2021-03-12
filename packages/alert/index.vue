@@ -2,7 +2,7 @@
   <div
     v-show="visible"
     class="y-alert"
-    :class="[color, center ? 'is-center' : '', 'is-' + effect]"
+    :class="[color, center ? 'is-center' : '', 'e-' + effect]"
   >
     <template v-if="showIcon">
       <i :class="['bi',iconClass,isBigIcon]"/>
@@ -39,7 +39,7 @@
 </template>
 <script>
 import { computed, ref } from 'vue'
-import { colorValidator } from '../utils/validate.js'
+import { colorValidator, effectValidator } from '../utils/validate.js'
 const icons = {
   attention: 'bi-question-circle',
   danger: 'bi-x-circle',
@@ -62,8 +62,13 @@ export default {
     },
     color: {
       type: String,
-      default: 'info',
+      default: 'primary',
       validator: colorValidator
+    },
+    effect: {
+      type: String,
+      default: 'dark',
+      validator: effectValidator
     },
     closable: {
       type: Boolean,
@@ -74,12 +79,7 @@ export default {
       default: ''
     },
     showIcon: Boolean,
-    center: Boolean,
-    effect: {
-      type: String,
-      default: 'light',
-      validator: (value) => ['light', 'dark'].indexOf(value) > -1
-    }
+    center: Boolean
   },
   setup (props, ctx) {
     const visible = ref(true)
@@ -106,6 +106,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/variables.scss";
+// 基本样式
 .y-alert {
   width: 100%;
   padding: 8px 16px;
@@ -117,39 +118,48 @@ export default {
   opacity: 1;
   display: flex;
   align-items: center;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
 }
-@each $color, $value in $default_colors {
-  .y-alert.#{$color}
+// 效果
+@each $color, $value in $light_colors {
+  .y-alert.#{$color}.e-light
   {
-    color:$value;
+    color: $value;
+  }
+}
+@each $color, $value in $light_bg_colors {
+  .y-alert.#{$color}.e-light
+  {
+    background-color: $value;
+    border-color: $value;
   }
 }
 @each $color, $value in $outline_colors {
-  .y-alert.#{$color}
+  .y-alert.#{$color}.e-outline
   {
-    background-color:$value;
+    color: $value;
+    background-color: #fff;
+    border: 1px solid $value;
   }
 }
 @each $color, $value in $default_colors {
-  .y-alert.#{$color}.is-dark
+  .y-alert.#{$color}.e-dark
   {
     color: #fff;
     background-color: $value;
-
+    border-color: $value;
   }
+}
+i + .y-alert__content{
+  padding: 0 8px;
 }
 .y-alert__content {
   display: flex;
   display: inline-flex;
   align-items: center;
-  padding: 0 8px;
 }
-.y-alert.is-light .y-alert__closebtn {
-  color: #c0c4cc;
-}
-.y-alert.is-dark .y-alert__closebtn{
+// 关闭按钮
+.y-alert.e-light .y-alert__closebtn,
+.y-alert.e-dark .y-alert__closebtn {
   color: #fff;
 }
 .y-alert__closebtn.is-customed {
@@ -160,21 +170,13 @@ export default {
   font-size: 12px;
   opacity: 1;
   position: absolute;
-  right: 15px;
+  right: 16px;
   cursor: pointer;
 }
+// 描述
 .y-alert .y-alert__description {
   font-size: 12px;
   margin: 5px 0 0;
-}
-.y-alert.is-dark .y-alert__description {
-  color: #fff;
-}
-@each $color, $value in $default_colors {
-  .y-alert.#{$color} .y-alert__description
-  {
-    color:$value;
-  }
 }
 .y-alert.is-center {
   -webkit-box-pack: center;
@@ -184,6 +186,7 @@ export default {
 i.is-big{
   font-size: 26px;
 }
+// 标题
 .y-alert__title {
   font-size: 13px;
   line-height: 18px;

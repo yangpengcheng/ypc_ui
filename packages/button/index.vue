@@ -174,6 +174,7 @@ export default {
     border-color: $value;
   }
 }
+// 圆形按钮
 .y-button.is-circle {
   min-width: 0;
   border-radius: 50%;
@@ -193,6 +194,7 @@ export default {
     margin-left: ($value/2)-1;
   }
 }
+// 加载中
 .icon-loading::before {
   -webkit-animation: spin 1s infinite steps(8);
   animation: spin 1s infinite steps(8);
