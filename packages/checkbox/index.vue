@@ -12,7 +12,6 @@
     <span :class="['y-checkbox-label-' + size]">{{ label }}</span>
   </div>
 </template>
-
 <script>
 import { computed } from 'vue'
 import { colorValidator, sizeValidator } from '../utils/validate.js'
@@ -105,54 +104,44 @@ export default {
   -o-appearance: none;
   appearance: none;
   position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
   transition:all .15s ease-out 0s;
   color: #fff;
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
   outline: none;
-  border-radius: 10%;
 }
 .checkbox-container{
-  display: flex;
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
 }
-.y-checkbox:before,.y-checkbox:after {
+.y-checkbox:before,
+.y-checkbox:after {
   position: absolute;
   content: "";
   background: #fff;
   transition: all .2s ease-in-out;
-}
-.y-checkbox:before {
-  left: 2px;
-  top: 6px;
-  width: 0;
-  height: 3px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
 }
+.y-checkbox:before {
+  left: 2px;
+  top: 6px;
+  width: 0;
+  height: 3px;
+}
 .y-checkbox:after {
   right: 9px;
   bottom: 3px;
   width: 3px;
   height: 0;
-  transform: rotate(40deg);
-  -webkit-transform: rotate(40deg);
-  -moz-transform: rotate(40deg);
-  -ms-transform: rotate(40deg);
-  -o-transform: rotate(40deg);
-  transition-delay: .2s;
 }
 .y-checkbox:indeterminate:before,.y-checkbox:indeterminate:after {
-  width:calc(50% - 1px);
+  width: calc(50% - 1px);
   height: 2px;
   transform: rotate(0);
   -webkit-transform: rotate(0);
@@ -160,29 +149,20 @@ export default {
   -ms-transform: rotate(0);
   -o-transform: rotate(0);
 }
-.y-checkbox.default:indeterminate:before {
-  left: 1px;
-  top: 7px;
-}
-.y-checkbox.default:indeterminate:after {
-  right: 1px;
-  top: 7px;
-}
-.y-checkbox.large:indeterminate:before {
-  left: 1px;
-  top: 9px;
-}
-.y-checkbox.large:indeterminate:after {
-  right: 1px;
-  top: 9px;
-}
-.y-checkbox.small:indeterminate:before {
-  left: 1px;
-  top: 6px;
-}
-.y-checkbox.small:indeterminate:after {
-  right: 1px;
-  top: 6px;
+@each $size, $value in $font_size {
+  .y-checkbox.#{$size}:indeterminate:before{
+    left: 1px;
+    top: ($value)-6;
+  }
+  .y-checkbox.#{$size}:indeterminate:after{
+    right: 1px;
+    top: ($value)-6;
+  }
+  .y-checkbox.#{$size}{
+    margin-right: 5px;
+    height: ($value*2)-6;
+    width: ($value*2)-6;
+  }
 }
 @each $color, $value in $default_colors {
   .y-checkbox.#{$color}{
@@ -201,21 +181,21 @@ export default {
     background: $value;
   }
 }
-.y-checkbox.large{
-  margin-right: 5px;
-  height: 26px;
-  width: 26px;
-}
-.y-checkbox.default{
-  margin-right: 5px;
-  height: 22px;
-  width: 22px;
-}
-.y-checkbox.small{
-  margin-right: 5px;
-  height: 18px;
-  width: 18px;
-}
+// .y-checkbox.large{
+//   margin-right: 5px;
+//   height: 26px;
+//   width: 26px;
+// }
+// .y-checkbox.default{
+//   margin-right: 5px;
+//   height: 22px;
+//   width: 22px;
+// }
+// .y-checkbox.small{
+//   margin-right: 5px;
+//   height: 18px;
+//   width: 18px;
+// }
 .y-checkbox.small:checked:before {
   left: 0px;
   top: 9px;
@@ -230,7 +210,7 @@ export default {
 }
 .y-checkbox.default:checked:before {
   left: 0px;
-  top: 13px;
+  top: 12px;
   width: 8px;
   height: 2px;
 }

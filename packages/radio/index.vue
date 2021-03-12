@@ -69,8 +69,6 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 20px;
-  width: 20px;
   transition:all .15s ease-out 0s;
   color: #fff;
   cursor: pointer;
@@ -95,18 +93,20 @@ export default {
   display: block;
   border-radius: 50%;
   transform: scale(0);
-  margin: 4px;
   transition: all ease-out 250ms;
 }
 .y-radio.large:before{
-  width: 12px;
-  height: 12px;
+  margin: 6px;
+  width: 10px;
+  height: 10px;
 }
 .y-radio.default:before{
+  margin: 5px;
   width: 8px;
   height: 8px;
 }
 .y-radio.small:before{
+  margin: 4px;
   width: 6px;
   height: 6px;
 }
@@ -130,14 +130,14 @@ export default {
 .y-radio.large{
   margin: 8px 0;
   margin-right: 5px;
-  height: 24px;
-  width: 24px;
+  height: 26px;
+  width: 26px;
 }
 .y-radio.default{
   margin: 6px 0;
   margin-right: 5px;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
 }
 .y-radio.small{
   margin: 5px 0;

@@ -15,17 +15,23 @@
 <script>
 import { ref, watch } from 'vue'
 import { UPDATE_MODEL_EVENT } from '../utils/constant.js'
+import {
+  colorValidator,
+  sizeValidator
+} from '../utils/validate.js'
 export default {
   name: 'YCheckboxGroup',
   emits: [UPDATE_MODEL_EVENT],
   props: {
     color: {
       type: String,
-      default: 'primary'
+      default: 'primary',
+      validator: colorValidator
     },
     size: {
       type: String,
-      default: 'small'
+      default: 'default',
+      validator: sizeValidator
     },
     checkData: {
       type: Array

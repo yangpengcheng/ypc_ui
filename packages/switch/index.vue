@@ -45,7 +45,6 @@ export default {
 @import "../styles/variables.scss";
 .y-switch {
   display: inline-block;
-  font-size: 100%;
   position: relative;
   vertical-align: middle;
 }
@@ -88,12 +87,12 @@ export default {
 }
 .y-switch.large,
 .y-switch.large .y-switch-style{
-  height: 24px;
+  height: 26px;
   width: 48px;
 }
 .y-switch.default,
 .y-switch.default .y-switch-style{
-  height: 20px;
+  height: 22px;
   width: 40px;
 }
 .y-switch.small,
@@ -102,24 +101,24 @@ export default {
   width: 36px;
 }
 .y-switch.large .y-switch-style{
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
+  -webkit-border-radius: 13px;
+  border-radius: 13px;
 }
 .y-switch.default .y-switch-style{
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
 }
 .y-switch.small .y-switch-style{
   -webkit-border-radius: 9px;
   border-radius: 9px;
 }
 .y-switch.large .y-switch-style:before{
-  height: 24px;
-  width: 24px;
+  height: 26px;
+  width: 26px;
 }
 .y-switch.default .y-switch-style:before{
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
 }
 .y-switch.small .y-switch-style:before{
   height: 18px;
