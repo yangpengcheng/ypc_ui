@@ -14,7 +14,7 @@
 
 <script>
 import { ref } from 'vue'
-import { colorValidator, sizeValidator } from '../utils/validate.js'
+import { sizeValidator } from '../utils/validate.js'
 import { UPDATE_MODEL_EVENT } from '../utils/constant.js'
 export default {
   name: 'YRadiogroup',
@@ -24,8 +24,7 @@ export default {
     },
     color: {
       type: String,
-      default: 'primary',
-      validator: colorValidator
+      default: 'primary'
     },
     size: {
       type: String,

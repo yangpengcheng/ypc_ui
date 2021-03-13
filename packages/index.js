@@ -12,6 +12,10 @@ import RadioGroup from './radio/radio-group.vue'
 import Silder from './silder'
 import Switch from './switch'
 import Tag from './tag'
+import Menu from './menu/Menu.vue'
+import SubMenu from './menu/SubMenu.vue'
+import MenuItem from './menu/MenuItem.vue'
+import Card from './card'
 
 import './styles/index.scss'
 
@@ -29,7 +33,11 @@ const components = [
   RadioGroup,
   Switch,
   Tag,
-  Silder
+  Silder,
+  Menu,
+  SubMenu,
+  MenuItem,
+  Card
 ]
 
 const install = Vue => {
@@ -53,5 +61,9 @@ export default {
   RadioGroup,
   Switch,
   Tag,
-  Silder
+  Silder,
+  Menu,
+  SubMenu,
+  MenuItem,
+  Card
 }

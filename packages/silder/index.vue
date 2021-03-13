@@ -1,18 +1,17 @@
 <template>
   <input
-    :class="['y-slider', color, disabled ? 'is-disabled' : '']"
+    :class="['y-slider', disabled ? 'is-disabled':'', color]"
     type="range"
     :min="min"
     :step="step"
     :max="max"
     :value="modelValue"
     :disabled="disabled"
-    @input="$emit('update:modelValue', $event.target.value)"
+    @input="handleInput"
   />
 </template>
 
 <script>
-import { colorValidator } from '../utils/validate.js'
 import { UPDATE_MODEL_EVENT } from '../utils/constant.js'
 export default {
   name: 'YSlider',
@@ -20,8 +19,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary',
-      validator: colorValidator
+      default: 'primary'
     },
     min: {
       type: [Number, String],
@@ -46,7 +44,7 @@ export default {
   },
   setup (props, { emit }) {
     const _ = require('lodash')
-    const handleInput = _.debounce((evt) => emit(UPDATE_MODEL_EVENT, event.target.value), 200)
+    const handleInput = _.debounce((evt) => emit(UPDATE_MODEL_EVENT, evt.target.value), 100)
     return {
       handleInput
     }
@@ -55,8 +53,10 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/variables.scss";
+// base
 .y-slider {
-  -webkit-appearance: none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
   width: 100%;
   height: 10px;
   border-radius: 5px;
@@ -66,8 +66,8 @@ export default {
   opacity: 1;
 }
 .y-slider::-webkit-slider-thumb {
+  -moz-appearance:none;
   -webkit-appearance: none;
-  appearance: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -79,36 +79,36 @@ export default {
   border-radius: 50%;
   cursor: pointer;
 }
-@each $color, $value in $outline_colors {
-  .y-slider.#{$color}
-  {
-    background:$value
-  }
-}
 @each $color, $value in $default_colors {
   .y-slider.#{$color}::-webkit-slider-thumb
   {
-    background:$value
+    background:$value;
+    border:none;
   }
   .y-slider.#{$color}::-moz-range-thumb{
     background:$value;
     border-color: $value;
   }
-}
-.y-slider.is-disabled::-moz-range-thumb,
-.y-slider.is-disabled::-webkit-slider-thumb,
-.y-slider.is-disabled
-{
-  cursor: not-allowed;
+  .y-slider.#{$color}
+  {
+    background:$value
+  }
 }
 @each $color, $value in $disabled_colors {
   .y-slider.#{$color}.is-disabled::-webkit-slider-thumb
   {
-    background:$value
+    background:$value;
+    border-color: transparent;
+    cursor: not-allowed;
   }
   .y-slider.#{$color}.is-disabled::-moz-range-thumb{
     background:$value;
     border-color: $value;
+    cursor: not-allowed;
+  }
+  .y-slider.#{$color}.is-disabled{
+    background: $value;
+    cursor: not-allowed;
   }
 }
 </style>

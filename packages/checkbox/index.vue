@@ -14,7 +14,7 @@
 </template>
 <script>
 import { computed } from 'vue'
-import { colorValidator, sizeValidator } from '../utils/validate.js'
+import { sizeValidator } from '../utils/validate.js'
 import { UPDATE_MODEL_EVENT } from '../utils/constant.js'
 export default {
   name: 'YCheckbox',
@@ -22,8 +22,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary',
-      validator: colorValidator
+      default: 'primary'
     },
     size: {
       type: String,
@@ -64,10 +63,8 @@ export default {
     const handleChanged = () => {
       if (Array.isArray(props.value)) {
         if (props.modelValue.length < props.value.length) {
-          // 未全部选中=>全部选中
           emit(UPDATE_MODEL_EVENT, props.value)
         } else {
-          // 全部选中=>全部未选中
           emit(UPDATE_MODEL_EVENT, [])
         }
       } else {
@@ -97,6 +94,12 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/variables.scss";
+// Base
+.checkbox-container{
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .y-checkbox{
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -111,11 +114,7 @@ export default {
   vertical-align: middle;
   outline: none;
 }
-.checkbox-container{
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+// before after
 .y-checkbox:before,
 .y-checkbox:after {
   position: absolute;
@@ -140,6 +139,7 @@ export default {
   width: 3px;
   height: 0;
 }
+// Indeterminate
 .y-checkbox:indeterminate:before,.y-checkbox:indeterminate:after {
   width: calc(50% - 1px);
   height: 2px;
@@ -181,21 +181,6 @@ export default {
     background: $value;
   }
 }
-// .y-checkbox.large{
-//   margin-right: 5px;
-//   height: 26px;
-//   width: 26px;
-// }
-// .y-checkbox.default{
-//   margin-right: 5px;
-//   height: 22px;
-//   width: 22px;
-// }
-// .y-checkbox.small{
-//   margin-right: 5px;
-//   height: 18px;
-//   width: 18px;
-// }
 .y-checkbox.small:checked:before {
   left: 0px;
   top: 9px;
@@ -232,13 +217,10 @@ export default {
   width: 2px;
   height: 16px;
 }
-.y-checkbox-label-large{
-  font-size: 16px;
-}
-.y-checkbox-label-default{
-  font-size: 14px;
-}
-.y-checkbox-label-small{
-  font-size: 12px;
+
+@each $size, $value in $font_size {
+  .y-checkbox-label-#{$size}{
+    font-size: $value;
+  }
 }
 </style>

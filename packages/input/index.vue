@@ -18,7 +18,7 @@
   >
     <!-- 前置内容 -->
     <span v-if="$slots.prefix" class="y-input__prefix">
-      <slot name="prefix"></slot>
+      <slot name="prefix"/>
     </span>
     <div class="y-input__content">
       <input
@@ -51,38 +51,38 @@
     <!-- 后置内容 -->
     <span v-if="getSuffixVisible()" class="y-input__suffix">
       <template v-if="!showClear && !showPwdVisible && !isWordLimitVisible && validateStatus ==='' ">
-        <slot name="suffix"></slot>
+        <slot name="suffix"/>
       </template>
       <span v-show="showClear" @click="clear" class="y-input__clear">
-        <i class="bi bi-x y-input__icon"></i>
+        <i class="bi bi-x y-input__icon"/>
       </span>
       <span
         v-show="showPwdVisible && !passwordVisible"
         @click="handlePasswordVisible"
       >
-        <i class="bi bi-eye y-input__icon"></i>
+        <i class="bi bi-eye y-input__icon"/>
       </span>
       <span
         v-show="showPwdVisible && passwordVisible"
         @click="handlePasswordVisible"
       >
-        <i class="bi bi-eye-slash y-input__icon"></i>
+        <i class="bi bi-eye-slash y-input__icon"/>
       </span>
       <span v-if="validateStatus != ''">
-        <i class="bi bi-check-circle" style="color:#29cc47" v-show="validateStatus==='correct'"></i>
-        <i class="bi bi-x-circle" style="color:#ff533d" v-show="validateStatus==='incorrect'"></i>
+        <i class="bi bi-check-circle" style="color:#29cc47" v-show="validateStatus==='correct'"/>
+        <i class="bi bi-x-circle" style="color:#ff533d" v-show="validateStatus==='incorrect'"/>
       </span>
       <template v-if="isWordLimitVisible">
         <span class="y-input__check"> {{ textLength }}/{{ upperLimit }} </span>
       </template>
     </span>
-    <span class="focus-border" v-if="transitionName"></span>
+    <span class="focus-border" v-if="transitionName"/>
   </div>
 </template>
-
 <script>
 import { computed, nextTick, ref } from 'vue'
 import { sizeValidator } from '../utils/validate.js'
+import { isKorean } from '../utils/util.js'
 import {
   UPDATE_MODEL_EVENT,
   INPUT,
@@ -119,6 +119,7 @@ export default {
     },
     size: {
       type: String,
+      default: 'default',
       validator: sizeValidator
     },
     autocomplete: {
@@ -173,10 +174,6 @@ export default {
     }
   },
   setup (props, ctx) {
-    const isKorean = (text) => {
-      const reg = /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi
-      return reg.test(text)
-    }
     const validateStatus = ref('')
     const noEmpty = computed(() => props.modelValue !== '')
     const input = ref(null)
@@ -185,7 +182,7 @@ export default {
     const isComposing = ref(false)
     const passwordVisible = ref(false)
     const inputValue = computed(() => input.value)
-    const inputSize = computed(() => props.size || 'default')
+    const inputSize = computed(() => props.size)
     const inputDisabled = computed(() => props.disabled)
     const nativeInputValue = computed(() => String(props.modelValue))
     const upperLimit = computed(() => ctx.attrs.maxlength)
@@ -234,7 +231,7 @@ export default {
       if (value === nativeInputValue.value) return
 
       ctx.emit(UPDATE_MODEL_EVENT, value)
-      ctx.emit('input', value)
+      ctx.emit(INPUT, value)
     }
     const handleChange = (event) => {
       if (props.opportunity === 'change') {
@@ -248,7 +245,7 @@ export default {
           }
         )
       }
-      ctx.emit('change', event.target.value)
+      ctx.emit(CHANGE, event.target.value)
     }
 
     const focus = () => {
@@ -263,12 +260,12 @@ export default {
 
     const handleFocus = (event) => {
       focused.value = true
-      ctx.emit('focus', event)
+      ctx.emit(FOCUS, event)
     }
 
     const handleBlur = (event) => {
       focused.value = false
-      ctx.emit('blur', event)
+      ctx.emit(BLUR, event)
     }
 
     const select = () => {
@@ -294,8 +291,8 @@ export default {
 
     const clear = () => {
       ctx.emit(UPDATE_MODEL_EVENT, '')
-      ctx.emit('change', '')
-      ctx.emit('clear')
+      ctx.emit(CHANGE, '')
+      ctx.emit(CLEAR)
     }
 
     const handlePasswordVisible = () => {
@@ -311,21 +308,20 @@ export default {
         isWordLimitVisible.value ||
         validateStatus.value
       )
-      // (validateState.value && needStatusIcon.value)
     }
 
     const onMouseLeave = (e) => {
       hovering.value = false
-      ctx.emit('mouseleave', e)
+      ctx.emit(MOUSE_LEAVE, e)
     }
 
     const onMouseEnter = (e) => {
       hovering.value = true
-      ctx.emit('mouseenter', e)
+      ctx.emit(MOUSE_ENTER, e)
     }
 
     const handleKeydown = (e) => {
-      ctx.emit('keydown', e)
+      ctx.emit(KEY_DOWN, e)
     }
     return {
       input,
@@ -365,6 +361,7 @@ export default {
 </script>
 <style lang="scss">
 @import '../styles/variables.scss';
+// Base
 .y-input {
   position: relative;
   font-size: 14px;
@@ -372,8 +369,9 @@ export default {
   align-items: center;
   width: 100%;
   height: auto;
-  border: 1px solid #4083ff;
+  border: 1px solid $input_border_color;
 }
+// Prefix
 .y-input__prefix {
   display: inline-flex;
   align-items: center;
@@ -381,11 +379,13 @@ export default {
   height: 28px;
   border: none
 }
+// Content
 .y-input__content{
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+// Inner
 .y-input__inner {
   -webkit-appearance: none;
   background-color: inherit;
@@ -401,6 +401,7 @@ export default {
   padding: 0 5px;
   width: 100%;
 }
+// Disabled
 .y-input.is-disabled{
   border-color: #999999;
 }
@@ -409,6 +410,7 @@ export default {
   color: #c0c4cc;
   cursor: not-allowed;
 }
+// Suffix
 .y-input__suffix{
   display: inline-flex;
   align-items: center;
@@ -416,17 +418,20 @@ export default {
   height: 28px;
   border: none
 }
+// clear
 .y-input .y-input__clear {
   color: #f56c6c;
   font-size: inherit;
   cursor: pointer;
 }
+// exceed
 .y-input.is-exceed{
   border-color: #f56c6c;
 }
 .y-input.is-exceed .y-input__check {
   color: #f56c6c;
 }
+// append
 .y-input .y-input__append {
   height: 100%;
   display: inline-flex;
@@ -444,6 +449,7 @@ export default {
   align-items: center;
   padding: 0 5px;
 }
+// Placeholder
 .y-input__inner::-webkit-input-placeholder {
   color: #c0c4cc;
 }
@@ -456,17 +462,7 @@ export default {
 .y-input__inner::placeholder {
   color: #c0c4cc;
 }
-.y-input__inner:hover {
-  border-color: #c0c4cc;
-}
-.y-input.is-active .y-input__inner,
-.y-input__inner:focus {
-  border-color: #409eff;
-  outline: 0;
-}
-.y-input__suffix-inner {
-  pointer-events: all;
-}
+
 .y-input.is-disabled .y-input__inner::-webkit-input-placeholder {
   color: #c0c4cc;
 }
@@ -485,61 +481,53 @@ export default {
 .y-transfer-panel__filter .y-icon-circle-close {
   cursor: pointer;
 }
-
+// hover
+.y-input__inner:hover {
+  border-color: #c0c4cc;
+}
+// active focus
+.y-input.is-active .y-input__inner,
+.y-input__inner:focus {
+  border-color: $input_border_color;
+  outline: 0;
+}
+// Suffix
+.y-input__suffix-inner {
+  pointer-events: all;
+}
 .y-input--suffix .y-input__inner {
   padding-right: 30px;
 }
 .y-input--prefix .y-input__inner {
   padding-left: 30px;
 }
-.y-input.large {
-  font-size: 16px;
-}
-.y-input.large .y-input__inner {
-  height: 32px;
-  line-height: 32px;
-}
-.y-input.default {
-  font-size: 14px;
-}
-.y-input.default .y-input__inner {
-  height: 28px;
-  line-height: 28px;
-}
-.y-input.default .y-input__icon {
-  width: 14px;
-  height: 14px;
-}
-.y-input.small {
-  font-size: 12px;
-}
-.y-input.small .y-input__inner {
-  height: 24px;
-  line-height: 24px;
-}
-.y-input.small .y-input__icon {
-  line-height: 24px;
+@each $size, $value in $font_size {
+  .y-input.#{$size}
+  {
+    font-size: $value;
+  }
+  .y-input.#{$size} .y-input__inner{
+    height: ($value*2);
+    line-height: 1;
+  }
+  .y-input.#{$size} .y-input__icon {
+    width: $value;
+    height: $value;
+  }
 }
 .y-input__inner::-ms-clear {
   display: none;
   width: 0;
   height: 0;
 }
+// label
 .y-input .label {
+  top: 6px;
   position: absolute;
   padding-left: 5px;
   pointer-events: none;
   transition: 0.2s ease all;
   color: #758575;
-}
-.y-input.large .label {
-  top: 6px;
-}
-.y-input.default .label {
-  top: 6px;
-}
-.y-input.small .label {
-  top: 6px;
 }
 .y-input.large input:focus ~ .label,
 .y-input.large.has-content input ~ label{
@@ -561,6 +549,6 @@ export default {
 }
 .y-input.is-line{
   border:none;
-  border-bottom: 1px solid #4083ff;
+  border-bottom: 1px solid $input_border_color;
 }
 </style>

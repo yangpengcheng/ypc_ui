@@ -9,23 +9,21 @@
     :href="disabled ? null : href"
     @click="handleClick"
   >
-    <div class="y-link--inner">
-      <span v-if="$slots.default" class="y-link--inner">
-        <slot></slot>
+    <div class="y-link__inner">
+      <span v-if="$slots.default" class="y-link__inner">
+        <slot/>
       </span>
       <i :class="['bi', iconClass]" v-if="iconClass" style="margin-left:5px"></i>
     </div>
   </a>
 </template>
 <script>
-import { colorValidator } from '../utils/validate.js'
 export default {
   name: 'YLink',
   props: {
     color: {
       type: String,
-      default: 'info',
-      validator: colorValidator
+      default: 'info'
     },
     underline: {
       type: Boolean,
@@ -102,7 +100,7 @@ export default {
     color:$value;
   }
 }
-.y-link--inner{
+.y-link__inner{
   display: flex;
   display: inline-flex;
   align-items: center;

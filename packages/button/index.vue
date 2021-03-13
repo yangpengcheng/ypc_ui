@@ -29,7 +29,6 @@
 import { computed } from 'vue'
 import { CLICK } from '../utils/constant.js'
 import {
-  colorValidator,
   sizeValidator,
   effectValidator,
   debounceValidator,
@@ -41,8 +40,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary',
-      validator: colorValidator
+      default: 'primary'
     },
     size: {
       type: String,
@@ -97,48 +95,52 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/variables.scss";
-// 基本样式
+// Base
 .y-button {
   display: inline-block;
   white-space: nowrap;
   cursor: pointer;
   line-height: 1;
-  border: 1px solid #fff;
+  border-width: 1px;
+  border-style: solid;
   outline: 0;
   font-weight: 500;
   min-width: 60px;
+  border-radius: 4px;
 }
 .y-button::-moz-focus-inner {
   border: 0;
 }
-// 内部布局
+// Internal layout
 .y-button__inside,
 .y-button__slot{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-// 禁用光标
+// Disabled cursor
 .y-button.is-disabled{
   cursor: not-allowed;
 }
-// 效果
+// effect
+.y-button.e-dark,
+.y-button.e-light{
+  border-color: transparent;
+}
 @each $color, $value in $default_colors {
   .y-button.#{$color}.e-dark
   {
     color: #fff;
     background-color: $value;
-    border-color: $value;
   }
 }
 @each $color, $value in $disabled_colors {
   .y-button.#{$color}.e-dark.is-disabled
   {
     background-color: $value;
-    border-color: $value;
   }
 }
-@each $color, $value in $outline_colors {
+@each $color, $value in $default_colors {
   .y-button.#{$color}.e-outline
   {
     color: $value;
@@ -163,7 +165,6 @@ export default {
   .y-button.#{$color}.e-light
   {
     background-color: $value;
-    border-color: $value;
   }
 }
 @each $color, $value in $disabled_colors {
@@ -171,10 +172,9 @@ export default {
   {
     color: $value;
     background-color: $value;
-    border-color: $value;
   }
 }
-// 圆形按钮
+// Icon button
 .y-button.is-circle {
   min-width: 0;
   border-radius: 50%;
@@ -183,7 +183,7 @@ export default {
   .y-button.#{$size}
   {
     font-size: $value;
-    padding: ($value/2)-1;
+    padding: ($value/2);
   }
   .y-button.#{$size} .y-button__icon{
     font-size: $value;
@@ -191,10 +191,10 @@ export default {
     height: $value;
   }
   .y-button.#{$size} [class*="y-button__icon"] + *{
-    margin-left: ($value/2)-1;
+    margin-left: ($value/2);
   }
 }
-// 加载中
+// Loading
 .icon-loading::before {
   -webkit-animation: spin 1s infinite steps(8);
   animation: spin 1s infinite steps(8);

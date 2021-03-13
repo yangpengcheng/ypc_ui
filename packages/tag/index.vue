@@ -1,20 +1,19 @@
 <template>
   <span
     ref="tag"
-    :class="classes"
-    :style="{ backgroundColor: backgroundColor }"
+    :class="['y-tag',color,size,`e-${effect}`,]"
     @click="handleClick"
   >
-    <slot></slot>
-    <span v-if="closable" class="y-tag__close" @click="handleClose">
-      <slot name="icon"/>
+    <slot/>
+    <span v-show="closable" class="y-tag__close" @click.stop="handleClose">
+      <i class="bi bi-x icon"/>
     </span>
   </span>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
-import { colorValidator, sizeValidator } from '../utils/validate.js'
+import { ref } from 'vue'
+import { sizeValidator, effectValidator } from '../utils/validate.js'
 export default {
   name: 'YTag',
   emits: ['close', 'click'],
@@ -22,11 +21,8 @@ export default {
     closable: Boolean,
     color: {
       type: String,
-      default: 'primary',
-      validator: colorValidator
+      default: 'primary'
     },
-    hit: Boolean,
-    disableTransitions: Boolean,
     backgroundColor: {
       type: String,
       default: ''
@@ -38,43 +34,21 @@ export default {
     },
     effect: {
       type: String,
-      default: 'light',
-      validator: (val) => {
-        return ['dark', 'light', 'plain'].indexOf(val) !== -1
-      }
+      default: 'dark',
+      validator: effectValidator
     }
   },
-  setup (props, ctx) {
+  setup (_, ctx) {
     const tag = ref(null)
-    const tagSize = computed(() => {
-      return props.size || 'default'
-    })
-    const classes = computed(() => {
-      const { color, hit, effect } = props
-      return [
-        'y-tag',
-        color,
-        tagSize.value ? `y-tag--${tagSize.value}` : '',
-        effect ? `y-tag--${effect}` : '',
-        hit && 'is-hit'
-      ]
-    })
-
-    // methods
     const handleClose = (event) => {
-      event.stopPropagation()
       tag.value.style.display = 'none'
       ctx.emit('close', event)
     }
-
     const handleClick = (event) => {
       ctx.emit('click', event)
     }
-
     return {
       tag,
-      tagSize,
-      classes,
       handleClose,
       handleClick
     }
@@ -85,118 +59,58 @@ export default {
 @import "../styles/variables.scss";
 // base
 .y-tag {
-  background-color: #ecf5ff;
-  border-color: #d9ecff;
-  display: inline-block;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  height: 32px;
-  padding: 0 10px;
-  line-height: 30px;
-  color: #409eff;
-  border-width: 1px;
+  line-height: 1;
   border-style: solid;
-  border-radius: 4px;
+  border-width: 1px;
   white-space: nowrap;
 }
-// is-hit
 @each $color, $value in $default_colors {
-  .y-tag.#{$color}.is-hit{
-    border-color: $value;
-  }
-  .y-tag--dark.#{$color}.is-hit{
-    border-color: $value;
-  }
-  .y-tag--plain.#{$color}.is-hit{
-    border-color: $value;
-  }
-}
-// y-tag__close
-@each $color, $value in $default_colors {
-  .y-tag.#{$color} .y-tag__close{
-    color: $value;
-  }
-  .y-tag.#{$color} .y-tag__close:hover{
+  .y-tag.#{$color}.e-dark{
     color: #fff;
-    background-color: $value;
-  }
-}
-//.y-tag--dark
-@each $color, $value in $default_colors {
-  .y-tag--dark.#{$color} .y-tag__close{
-    color: #fff;
-  }
-  .y-tag--dark.#{$color} .y-tag__close:hover{
-    color: #fff;
-    background-color: $value;
-  }
-}
-// y-tag
-@each $color, $value in $default_colors {
-  .y-tag.#{$color}{
-    color: $value;
+    border-color: $value;
+    background: $value;
   }
 }
 @each $color, $value in $outline_colors {
-  .y-tag.#{$color}{
-    background-color: $value;
-  }
-}
-@each $color, $value in $disabled_colors {
-  .y-tag.#{$color}{
+  .y-tag.#{$color}.e-outline
+  {
+    color: $value;
+    background-color: #fff;
     border-color: $value;
   }
 }
 @each $color, $value in $default_colors {
-  .y-tag--dark.#{$color}{
-    border-color: $value;
-    background-color:$value;
-    border-color: $value;
-    color: #fff;
-  }
-}
-@each $color, $value in $default_colors {
-  .y-tag--plain.#{$color}{
-    border-color: $value;
-    background-color:#fff;
+  .y-tag.#{$color}.e-light
+  {
     color: $value;
   }
 }
-// icon
-.y-tag [class*="svg-icon"] {
-  border-radius: 50%;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-  font-size: 12px;
-  height: 16px;
-  width: 16px;
-  line-height: 16px;
-  vertical-align: middle;
-  top: -1px;
-  right: -5px;
+@each $color, $value in $light_bg_colors {
+  .y-tag.#{$color}.e-light
+  {
+    background-color: $value;
+    border-color: transparent;
+  }
 }
-.y-tag [class*="svg-icon"]::before {
-  display: block;
+.y-tag__close{
+  display: inline-block;
 }
-.y-tag--default {
-  height: 24px;
+.y-tag.large {
+  height: 26px;
+  padding:0 10px;
+  font-size: 16px;
+}
+.y-tag.default {
+  height: 22px;
   padding: 0 8px;
-  line-height: 22px;
   font-size: 14px;
 }
-.y-tag--default .y-icon-close {
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-}
-.y-tag--small {
-  height: 20px;
-  padding: 0 5px;
-  line-height: 19px;
-  font-size: 14px;
-}
-.y-tag--small .y-icon-close {
-  margin-left: -3px;
-  -webkit-transform: scale(0.7);
-  transform: scale(0.7);
+.y-tag.small {
+  height: 18px;
+  padding: 0 6px;
+  font-size: 12px;
 }
 </style>

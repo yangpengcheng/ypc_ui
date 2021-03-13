@@ -16,7 +16,6 @@
 import { ref, watch } from 'vue'
 import { UPDATE_MODEL_EVENT } from '../utils/constant.js'
 import {
-  colorValidator,
   sizeValidator
 } from '../utils/validate.js'
 export default {
@@ -25,8 +24,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary',
-      validator: colorValidator
+      default: 'primary'
     },
     size: {
       type: String,

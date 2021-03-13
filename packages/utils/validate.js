@@ -1,7 +1,3 @@
-export const colorValidator = (color) => {
-  return ['attention', 'danger', 'info', 'primary', 'success', 'warning'].includes(color)
-}
-
 export const sizeValidator = (size) => {
   return ['large', 'default', 'small', null].includes(size)
 }
