@@ -16,6 +16,8 @@ import Menu from './menu/Menu.vue'
 import SubMenu from './menu/SubMenu.vue'
 import MenuItem from './menu/MenuItem.vue'
 import Card from './card'
+import Row from './row'
+import Col from './col'
 
 import './styles/index.scss'
 
@@ -37,7 +39,9 @@ const components = [
   Menu,
   SubMenu,
   MenuItem,
-  Card
+  Card,
+  Row,
+  Col
 ]
 
 const install = Vue => {
@@ -47,7 +51,10 @@ const install = Vue => {
 }
 
 export default {
-  install,
+  install
+}
+
+export {
   Accordion,
   Button,
   AccordionItem,
@@ -65,5 +72,7 @@ export default {
   Menu,
   SubMenu,
   MenuItem,
-  Card
+  Card,
+  Row,
+  Col
 }

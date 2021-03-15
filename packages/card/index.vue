@@ -55,14 +55,15 @@ export default {
 
 <style lang="scss" scoped>
 .y-card {
-  display: flex;
+  display: inline-flex;
   height: 130px;
   padding: 24px 20px;
+  width: 100%;
   color: rgb(178, 72, 255);
 }
 .left {
-  display: flex;
-  flex-direction: column-reverse;
+  display: inline-flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-right: 16px;
   height: 100%;
