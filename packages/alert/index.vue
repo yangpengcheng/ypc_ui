@@ -165,6 +165,7 @@ i + .y-alert__content{
 }
 // Description
 .y-alert .y-alert__description {
+  color: inherit;
   font-size: 12px;
   margin: 5px 0 0;
 }

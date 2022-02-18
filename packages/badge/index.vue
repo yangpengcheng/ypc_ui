@@ -1,6 +1,6 @@
 <template>
   <div class="y-badge">
-    <slot/>
+    <slot />
     <sup
       v-show="!hidden && (content || content === 0 || isDot)"
       v-text="content"
@@ -11,7 +11,8 @@
           'is-fixed': $slots.default,
           'is-dot': isDot
         }
-      ]">
+      ]"
+    >
     </sup>
   </div>
 </template>
@@ -26,10 +27,11 @@ export default {
     isDot: Boolean,
     hidden: Boolean,
     color: {
-      type: String
+      type: String,
+      default: 'primary'
     }
   },
-  setup (props) {
+  setup(props) {
     const content = computed(() => {
       if (props.isDot) return
       const value = props.value
@@ -48,7 +50,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "../styles/variables.scss";
+@import '../styles/variables.scss';
 .y-badge {
   position: relative;
   vertical-align: middle;
@@ -84,8 +86,7 @@ export default {
   border-radius: 50%;
 }
 @each $color, $value in $default_colors {
-  .y-badge__content.#{$color}
-  {
+  .y-badge__content.#{$color} {
     background-color: $value;
     border-color: $value;
   }

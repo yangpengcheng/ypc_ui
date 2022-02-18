@@ -6,6 +6,7 @@
       disabled && 'is-disabled',
       underline && !disabled && 'is-underline'
     ]"
+    rel="preload"
     :href="disabled ? null : href"
     @click="handleClick"
   >

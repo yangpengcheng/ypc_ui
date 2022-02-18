@@ -1,12 +1,12 @@
 <template>
   <span
     ref="tag"
-    :class="['y-tag',color,size,`e-${effect}`,]"
+    :class="['y-tag', color, size, `e-${effect}`]"
     @click="handleClick"
   >
-    <slot/>
+    <slot />
     <span v-show="closable" class="y-tag__close" @click.stop="handleClose">
-      <i class="bi bi-x icon"/>
+      <i class="bi bi-x icon" />
     </span>
   </span>
 </template>
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "../styles/variables.scss";
+@import '../styles/variables.scss';
 // base
 .y-tag {
   position: relative;
@@ -68,39 +68,36 @@ export default {
   white-space: nowrap;
 }
 @each $color, $value in $default_colors {
-  .y-tag.#{$color}.e-dark{
+  .y-tag.#{$color}.e-dark {
     color: #fff;
     border-color: $value;
     background: $value;
   }
 }
 @each $color, $value in $outline_colors {
-  .y-tag.#{$color}.e-outline
-  {
+  .y-tag.#{$color}.e-outline {
     color: $value;
     background-color: #fff;
     border-color: $value;
   }
 }
 @each $color, $value in $default_colors {
-  .y-tag.#{$color}.e-light
-  {
+  .y-tag.#{$color}.e-light {
     color: $value;
   }
 }
 @each $color, $value in $light_bg_colors {
-  .y-tag.#{$color}.e-light
-  {
+  .y-tag.#{$color}.e-light {
     background-color: $value;
     border-color: transparent;
   }
 }
-.y-tag__close{
+.y-tag__close {
   display: inline-block;
 }
 .y-tag.large {
   height: 26px;
-  padding:0 10px;
+  padding: 0 10px;
   font-size: 16px;
 }
 .y-tag.default {

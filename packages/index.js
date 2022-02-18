@@ -18,6 +18,9 @@ import MenuItem from './menu/MenuItem.vue'
 import Card from './card'
 import Row from './row'
 import Col from './col'
+import Progress from './progress'
+import Table from './table/Table.vue'
+import TableColumn from './table/TableColumn.vue'
 
 import './styles/index.scss'
 
@@ -41,7 +44,10 @@ const components = [
   MenuItem,
   Card,
   Row,
-  Col
+  Col,
+  Progress,
+  Table,
+  TableColumn
 ]
 
 const install = Vue => {
@@ -74,5 +80,8 @@ export {
   MenuItem,
   Card,
   Row,
-  Col
+  Col,
+  Progress,
+  Table,
+  TableColumn
 }
